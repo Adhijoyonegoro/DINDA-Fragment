@@ -21,6 +21,7 @@ import com.example.dinda.Model.ModelDashboard;
 import com.example.dinda.R;
 import com.example.dinda.Tabs.DashboardActivity;
 import com.example.dinda.Tabs.ProfileActivity;
+import com.example.dinda.Tabs.ProsesActivity;
 
 import java.util.List;
 
@@ -70,10 +71,12 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.Hold
                     Intent intent = new Intent(context, ProfileActivity.class);
                     context.startActivity(intent);
                 }
-//                else if (x.getId().equals("id_semua_daftar_pesanan")) {
-//                    Intent intent = new Intent(context, DashboardActivity.class);
-//                    context.startActivity(intent);
-//                } else if (x.getId().equals("id_history")) {
+//                else
+                if (x.getId() == 2) {
+                    Intent intent = new Intent(context, ProsesActivity.class);
+                    context.startActivity(intent);
+                }
+//                else if (x.getId().equals("id_history")) {
 //                    Intent intent = new Intent(context, DashboardActivity.class);
 //                    context.startActivity(intent);
 //                } else if (x.getId().equals("id_akun")) {

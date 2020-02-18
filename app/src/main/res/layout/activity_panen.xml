@@ -1,9 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tabs.PanenActivity">
+    tools:context=".Tabs.ProfileActivity"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteGreyfish"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/corner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/asset014"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lvHeader"
+            android:layout_below="@id/corner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="25dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/asset015"
+                android:paddingBottom="5dp"
+                />
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_below="@id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PANEN"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:fontFamily="@font/vagroundedstd_bold"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

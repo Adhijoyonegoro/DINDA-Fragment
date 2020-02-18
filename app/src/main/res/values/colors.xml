@@ -7,7 +7,7 @@
     <color name="colorWhiteGreyfish">#F8F8F8</color>
     <color name="colorRed">#8b161c</color>
     <color name="colorBackgrounContent">#F5FFFA</color>
-    <color name="colorTransparent">#1AF8F8F8</color>
+    <color name="colorTransparent">#1CFFFFFF</color>
     <color name="colorGrayDark">#898787</color>
 
 </resources>
