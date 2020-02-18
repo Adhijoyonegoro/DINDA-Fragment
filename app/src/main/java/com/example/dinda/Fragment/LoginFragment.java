@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.dinda.MainActivity;
 import com.example.dinda.R;
+import com.example.dinda.Tabs.DashboardActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -31,10 +31,10 @@ public class LoginFragment extends Fragment {
     TextInputEditText etPass;
     @BindView(R.id.til_pass)
     TextInputLayout tilPass;
-    @BindView(R.id.cb_show_hide_pass)
-    CheckBox cbShowHidePass;
-    @BindView(R.id.tvc_forgot_pass)
-    TextView tvcForgotPass;
+//    @BindView(R.id.cb_show_hide_pass)
+//    CheckBox cbShowHidePass;
+//    @BindView(R.id.tvc_forgot_pass)
+//    TextView tvcForgotPass;
     @BindView(R.id.btn_login)
     Button btnLogin;
 
@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
 
     @OnClick(R.id.btn_login)
     public void onViewClicked() {
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
         startActivity(intent);
     }
 }

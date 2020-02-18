@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    >
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@color/colorGreyWhite"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:background="@color/colorPrimaryDark"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            >
+
+            <LinearLayout
+                android:id="@+id/top"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:paddingTop="5dp"
+                android:paddingRight="7dp"
+                android:gravity="end"
+                >
+
+                <TextView
+                    android:id="@+id/txtDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="true"
+                    android:text="Tanggal"
+                    android:textColor="@color/colorWhiteGreyfish"
+                    android:textSize="11sp"
+                    android:fontFamily="@font/vagroundedstd_thin"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_below="@id/top"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:gravity="left|center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/asset03"
+                    android:layout_gravity="center"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_toRightOf="@id/header"
+                android:layout_below="@id/top"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center|left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtNamaMandor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="true"
+                    android:text="Nama Mandor"
+                    android:textColor="@color/colorWhiteGreyfish"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/vagroundedstd_bold"
+                    />
+
+                <TextView
+                    android:id="@+id/txtIdMandor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="true"
+                    android:text="12345678"
+                    android:textColor="@color/colorWhiteGreyfish"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/vagroundedstd_thin"
+                    />
+
+                <TextView
+                    android:id="@+id/txtSitecode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="true"
+                    android:text="SITECODE"
+                    android:textColor="@color/colorWhiteGreyfish"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/vagroundedstd_thin"
+                    />
+
+                <TextView
+                    android:id="@+id/txtAfdeling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textAllCaps="true"
+                    android:text="AFDELING"
+                    android:textColor="@color/colorWhiteGreyfish"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/vagroundedstd_thin"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:behavior_overlapTop="0dp"
+        app:layout_anchor="@id/appBar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            tools:context=".Tabs.DashboardActivity"
+            tools:showIn="@layout/activity_dashboard">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_dash"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,8 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Tabs.MenuActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Tabs.PanenActivity"></activity>
+        <activity
+            android:name=".Tabs.ProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Tabs.DashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Tabs.MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Views.SplashActivity">
             <intent-filter>

@@ -28,8 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:singleLine="true"
-                android:maxLength="30"
-                android:inputType="textEmailAddress"
+                android:maxLength="6"
+                android:inputType="number"
                 android:drawableRight="@drawable/asset01"
                 android:drawablePadding="5dp"
                 android:paddingLeft="10dp"
@@ -70,44 +70,44 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="8dp" >
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:paddingTop="8dp" >-->
 
-            <CheckBox
-                android:id="@+id/cb_show_hide_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/show_pwd"
-                android:textColor="@color/colorGreyWhite"
-                android:textSize="11sp"
-                />
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_show_hide_pass"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="@string/show_pwd"-->
+<!--                android:textColor="@color/colorGreyWhite"-->
+<!--                android:textSize="11sp"-->
+<!--                />-->
 
-            <TextView
-                android:id="@+id/tvc_forgot_pass"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:visibility="gone"
-                android:gravity="end"
-                android:padding="5dp"
-                android:text="@string/hide_pwd"
-                android:textColor="@color/colorGreyWhite"
-                android:textSize="11sp"
-                android:fontFamily="@font/vagroundedstd_thin"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/tvc_forgot_pass"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:visibility="gone"-->
+<!--                android:gravity="end"-->
+<!--                android:padding="5dp"-->
+<!--                android:text="@string/hide_pwd"-->
+<!--                android:textColor="@color/colorGreyWhite"-->
+<!--                android:textSize="11sp"-->
+<!--                android:fontFamily="@font/vagroundedstd_thin"-->
+<!--                />-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_login_selector"
             android:padding="3dp"
