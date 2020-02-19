@@ -77,7 +77,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardList.add(new ModelDashboard(5, R.drawable.asset09, "WORKSHOP"));
         dashboardList.add(new ModelDashboard(6, R.drawable.asset08, "MAINTENANCE"));
         dashboardList.add(new ModelDashboard(7, R.drawable.asset010, "OPERASIONAL"));
-        dashboardList.add(new ModelDashboard(8, R.drawable.asset010, "STATUS TRANSAKSI"));
+        dashboardList.add(new ModelDashboard(8, R.drawable.asset019a, "STATUS TRANSAKSI"));
         dashboardList.add(new ModelDashboard(9, R.drawable.asset06, "PROFIL"));
         dashboardList.add(new ModelDashboard(10, R.drawable.asset07b, "PENGATURAN"));
 //        dashboardList.add(new ModelDashboard("id_info_resto", R.drawable.ic_resto_green,"Info Restoran"));
