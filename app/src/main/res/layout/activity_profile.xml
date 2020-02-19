@@ -88,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="visible"
                 >
 
                 <TextView
@@ -145,6 +146,51 @@
                             android:paddingLeft="15dp"
                             android:paddingRight="25dp"
                             android:text="SYM"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Afdeling"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="OA"
                             android:textSize="11sp"
                             android:fontFamily="@font/vagroundedstd_bold"
                             android:textColor="@color/colorGrayDark"
@@ -264,7 +310,7 @@
                             android:paddingTop="10dp"
                             android:paddingLeft="25dp"
                             android:paddingRight="15dp"
-                            android:text="Afdeling"
+                            android:text="Jumlah Mandor Panen"
                             android:textSize="11sp"
                             android:fontFamily="@font/vagroundedstd_thin"
                             android:textColor="@color/colorGrayDark"
@@ -279,7 +325,142 @@
                             android:paddingTop="10dp"
                             android:paddingLeft="15dp"
                             android:paddingRight="25dp"
-                            android:text="OA"
+                            android:text="3"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Luas Panen Afdeling"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="673.1"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Pemanen"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="28"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Pokok Produktif"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="89982"
                             android:textSize="11sp"
                             android:fontFamily="@font/vagroundedstd_bold"
                             android:textColor="@color/colorGrayDark"
@@ -296,6 +477,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="visible"
                 >
 
                 <TextView
@@ -549,6 +731,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:visibility="visible"
                 >
 
                 <TextView
@@ -696,6 +879,2012 @@
                             android:paddingLeft="15dp"
                             android:paddingRight="25dp"
                             android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_proses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Proses"
+                    android:textAllCaps="true"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/vagroundedstd_bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="1dp"
+                    android:background="@drawable/el_shadow"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="PT"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="SL2"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Kapasitas KCP"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="0"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Kapasitas Storage Kernel"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="400"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Sumber Buah"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="INTERNAL / EXTERNAL"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Kapasitas Storage CPO"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="4000"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Standard Jam Olah Pabrik"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="22"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Kapasitas Pabrik"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="45"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_rawat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Rawat"
+                    android:textAllCaps="true"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/vagroundedstd_bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="1dp"
+                    android:background="@drawable/el_shadow"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="PT"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="SYM"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Afdeling"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="OA"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Rayon"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Pekerja Rawat Prunning"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="4.89"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Rotasi Gawangan"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="2.00"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Luas Plan Circle"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text=".6.73."
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Luas Tanam Afdeling"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="673.10"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Luas Plan Prunning"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text=".26.92."
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Rotasi Circle"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="0"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Pekerja Rawat Non Prunning"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Luas Plan Gawangan"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text=".4.49."
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_transport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Transport"
+                    android:textAllCaps="true"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/vagroundedstd_bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="1dp"
+                    android:background="@drawable/el_shadow"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="PT"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="SYM"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Afdeling"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="OA"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Transport Kontraktor"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Pekerja Infield"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="12"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Transport Internal"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Angkong"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="0"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Wintor"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="6"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Kubota"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="0"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_workshop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:text="Workshop"
+                    android:textAllCaps="true"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:fontFamily="@font/vagroundedstd_bold"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:elevation="1dp"
+                    android:background="@drawable/el_shadow"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="PT"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="SL1"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Jumlah Mekanik"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="23"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Mekanisasi Rawat - Grabber TKKS"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="5"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Transport - DT Manual"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="7"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Transport - DT Arm Roll"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="0"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Transport - DT Crane"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="2"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Mekanisasi Panen - Kubota"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="5"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Infrastruktur"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="8"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Mekanisasi Rawat - Fertilizer Spreader"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="2"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Alat Berat - Grader"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="2"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Alat Berat - Compactor"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="2"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Mekanisasi Panen - Wintor"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Alat Berat - Backhoe Loader"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="1"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma MH Total Maintenance"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="-"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Alat Berat - Excavator"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="5"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_bold"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.1dp"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorWhiteGreyfish"
+                        android:weightSum="4"
+                        >
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|left"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="25dp"
+                            android:paddingRight="15dp"
+                            android:text="Norma Unit Mekanisasi Rawat - Winkos"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/vagroundedstd_thin"
+                            android:textColor="@color/colorGrayDark"
+                            />
+
+                        <TextView
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|right"
+                            android:paddingBottom="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="25dp"
+                            android:text="4"
                             android:textSize="11sp"
                             android:fontFamily="@font/vagroundedstd_bold"
                             android:textColor="@color/colorGrayDark"
