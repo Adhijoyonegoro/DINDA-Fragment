@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhiteGreyfish"
     tools:context=".Tabs.ProfileActivity"
     >
 
@@ -11,7 +12,6 @@
         android:id="@+id/rl_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhiteGreyfish"
         android:orientation="horizontal"
         >
 
@@ -35,7 +35,7 @@
         <LinearLayout
             android:id="@+id/lvHeader"
             android:layout_below="@id/corner"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
@@ -64,6 +64,153 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/lvPT"
+            android:layout_below="@id/corner"
+            android:layout_toRightOf="@id/lvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="5dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/asset015"
+                android:paddingBottom="5dp"
+                android:visibility="invisible"
+                />
+
+            <TextView
+                android:id="@+id/txtPT"
+                android:layout_below="@id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KTS"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:fontFamily="@font/vagroundedstd_bold"
+                />
+
+        </LinearLayout>
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@id/rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"
+            android:text="Jam Start Proses - Line 1"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/vagroundedstd_bold"
+            />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="time"
+            android:textSize="40sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/vagroundedstd_thin"
+            android:background="@drawable/el_bg"
+            android:visibility="visible"
+            />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="number"
+            android:tooltipText="@string/username"
+            android:textSize="40sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:fontFamily="@font/vagroundedstd_thin"
+            android:background="@drawable/el_bg"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="70dp"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="Aktifkan jika ada kegiatan, nonaktifkan jika tidak ada kegiatan yang diinput"
+            android:textSize="12dp"
+            android:textStyle="italic"
+            android:fontFamily="@font/vagroundedstd_thin"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:paddingBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:weightSum="2"
+        >
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_kembali"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_login_selector_stroke"
+            android:padding="3dp"
+            android:text="Kembali"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp"
+            android:fontFamily="@font/vagroundedstd_thin"
+            />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btn_lanjut"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/btn_login_selector_black"
+            android:padding="3dp"
+            android:text="Lanjut"
+            android:textColor="@color/colorWhiteGreyfish"
+            android:textSize="13sp"
+            android:fontFamily="@font/vagroundedstd_thin"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

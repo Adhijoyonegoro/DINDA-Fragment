@@ -20,8 +20,11 @@ import com.example.dinda.Fragment.ProfileFragment;
 import com.example.dinda.Model.ModelDashboard;
 import com.example.dinda.R;
 import com.example.dinda.Tabs.DashboardActivity;
+import com.example.dinda.Tabs.HistoryActivity;
+import com.example.dinda.Tabs.PanenActivity;
 import com.example.dinda.Tabs.ProfileActivity;
 import com.example.dinda.Tabs.ProsesActivity;
+import com.example.dinda.Tabs.RawatActivity;
 
 import java.util.List;
 
@@ -66,20 +69,29 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.Hold
 //                    fragmentTransaction.commit();
 //                }
 //                else
-//
-                if (x.getId() == 8) {
-                    Intent intent = new Intent(context, ProfileActivity.class);
+                if (x.getId() == 0) {
+                    Intent intent = new Intent(context, PanenActivity.class);
                     context.startActivity(intent);
                 }
-//                else
+                if (x.getId() == 1) {
+                    Intent intent = new Intent(context, RawatActivity.class);
+                    context.startActivity(intent);
+                }
                 if (x.getId() == 2) {
                     Intent intent = new Intent(context, ProsesActivity.class);
                     context.startActivity(intent);
                 }
-//                else if (x.getId().equals("id_history")) {
-//                    Intent intent = new Intent(context, DashboardActivity.class);
-//                    context.startActivity(intent);
-//                } else if (x.getId().equals("id_akun")) {
+                if (x.getId() == 8) {
+                    Intent intent = new Intent(context, HistoryActivity.class);
+                    context.startActivity(intent);
+                }
+                if (x.getId() == 9) {
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    context.startActivity(intent);
+                }
+
+//                else
+//                if (x.getId().equals("id_akun")) {
 //                    Intent intent = new Intent(context, DashboardActivity.class);
 //                    context.startActivity(intent);
 //                }
