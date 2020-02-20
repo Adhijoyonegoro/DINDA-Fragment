@@ -11,4 +11,85 @@
     <color name="colorTransparent">#1CFFFFFF</color>
     <color name="colorGrayDark">#898787</color>
 
+
+
+    <color name="color001">#FFFFFF</color>
+
+    <color name="color002">#121212</color>
+
+    <color name="color003">#1c3e21</color>
+
+    <color name="color004">#FF0000</color>
+
+    <color name="color005">#F0F3F4</color>
+
+    <color name="color006">#454545</color>
+
+    <color name="color007">#C03B2B</color>
+
+    <color name="color008">#005D9D</color>
+
+    <color name="color009">#005D9D</color>
+
+    <color name="color010">#A02385</color>
+
+    <color name="color011">#A76828</color>
+
+    <color name="color012">#00AE4D</color>
+
+    <color name="color013">#F05123</color>
+
+    <color name="color014">#FAA21B</color>
+
+    <color name="color015">#17202A</color>
+
+    <color name="color016">#00848B</color>
+
+    <color name="color017">#7e7e7e</color>
+
+    <color name="color018">#cccccc</color>
+
+    <color name="color019">#1f1f1f</color>
+
+    <color name="color020">#F0E68C</color>
+
+
+
+
+    //BUTTON CLICK
+
+    <color name="buttonPressed">#F0F3F4</color>
+
+    <color name="buttonPressed2">#C03B2B</color>
+
+    <color name="buttonPressed3">#005D9D</color>
+
+    <color name="buttonPressed4">#A02385</color>
+
+    <color name="buttonPressed5">#A76828</color>
+
+    <color name="buttonPressed6">#00AE4D</color>
+
+    <color name="buttonPressed7">#00848B</color>
+
+    <color name="buttonPressed8">#F05123</color>
+
+    <color name="buttonPressed9">#FAA21B</color>
+
+    <color name="buttonPressed10">#17202A</color>
+
+    <color name="buttonNotPressedGreen">#1c3e21</color>
+
+    <color name="buttonNotPressedRed">#C03B2B</color>
+
+    <color name="buttonNotPressedWhite">#FFFFFF</color>
+
+    <color name="buttonNotPressedBlack">#000000</color>
+
+    <color name="buttonNotPressedDarkGrey">#121212</color>
+
+    <color name="buttonNotPressedGold">#c2b239</color>
+
+    <color name="colorTransparentWhite">#cccccc</color>
+
 </resources>

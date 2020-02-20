@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/listImgAlert"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/color003"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/text"
+        android:layout_below="@id/line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/iv_loading"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_gravity="center"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/tv_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center|top"
+                    android:gravity="center"
+                    android:textColor="@color/color006"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/vagroundedstd_thin"
+                    />
+
+                <Button
+                    android:id="@+id/btn_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:text="TUTUP"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/vagroundedstd_thin"
+                    android:textColor="@color/color002"
+                    android:background="@drawable/button_stroke"
+                    />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_below="@id/text"-->
+<!--        -->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        >-->
+
+<!--        -->
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:gravity="center"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_loading"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="10sp"-->
+<!--            android:fontFamily="@font/vagroundedstd_thin"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
+
+</RelativeLayout>

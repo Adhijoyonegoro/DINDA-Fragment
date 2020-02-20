@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color001">
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="@color/color015"/>-->
+
+    <LinearLayout
+        android:id="@+id/linearKet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/popup_keterangan"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textAlignment="center"/>
+
+        <!--<TextView-->
+        <!--android:id="@+id/popup_negative_action"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:textSize="18sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:gravity="center"-->
+        <!--android:padding="10dp"-->
+        <!--android:text="BATAL"/>-->
+        <!--<View-->
+        <!--android:layout_width="0.5dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/color015"/>-->
+        <!--<TextView-->
+        <!--android:id="@+id/popup_positive_action"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textSize="18sp"-->
+        <!--android:padding="10dp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:gravity="center"-->
+        <!--android:text="OK"/>-->
+        <!--</LinearLayout>-->
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="@color/color015"/>-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/linearKet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/popup_negative_action"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginRight="5sp"
+            android:background="@drawable/button_stroke"
+            android:text="Batal"
+            android:textSize="13dp"
+            android:fontFamily="@font/vagroundedstd_thin"
+            android:textColor="@color/color002" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/popup_positive_action"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/button_file"
+            android:text="Ya"
+            android:textSize="13dp"
+            android:fontFamily="@font/vagroundedstd_thin"
+            android:textColor="@color/color001" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/popup_negative_action"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:gravity="center"-->
+            <!--android:padding="10dp"-->
+            <!--android:text="BATAL"/>-->
+        <!--<View-->
+            <!--android:layout_width="0.5dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:background="@color/color015"/>-->
+        <!--<TextView-->
+            <!--android:id="@+id/popup_positive_action"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="18sp"-->
+            <!--android:padding="10dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:gravity="center"-->
+            <!--android:text="OK"/>-->
+    <!--</LinearLayout>-->
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0.5dp"-->
+        <!--android:background="@color/color015"/>-->
+
+    </LinearLayout>
+
+</RelativeLayout>
