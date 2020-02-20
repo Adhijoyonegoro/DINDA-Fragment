@@ -43,32 +43,69 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_pass"
+        <LinearLayout
+            android:id="@+id/rl_tgl_lahir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/colorGreyWhite"
-            >
+            android:orientation="vertical"
+            android:clickable="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Lahir"
+                android:fontFamily="@font/vagroundedstd_thin"
+                android:textColorHint="@color/colorGreyWhite"
+                android:textColor="@color/colorGreyWhite"
+                android:textSize="12sp"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_pass"
+            <TextView
+                android:id="@+id/tv_tgl_lahir"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
                 android:singleLine="true"
                 android:maxLength="10"
-                android:inputType="textPassword"
+                android:inputType="none"
                 android:drawableRight="@drawable/asset02"
                 android:drawablePadding="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="5dp"
-                android:hint="@string/password"
                 android:textSize="13sp"
                 android:fontFamily="@font/vagroundedstd_thin"
                 android:textColor="@color/colorGreyWhite"
-                android:textColorHint="@color/colorGreyWhite"
                 />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhiteGreyfish"/>
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/til_pass"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:textColorHint="@color/colorGreyWhite"-->
+<!--                >-->
 
-        </com.google.android.material.textfield.TextInputLayout>
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/et_tgl_lahir"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:singleLine="true"-->
+<!--                    android:maxLength="10"-->
+<!--                    android:inputType="none"-->
+<!--                    android:drawableRight="@drawable/asset02"-->
+<!--                    android:drawablePadding="5dp"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="5dp"-->
+<!--                    android:hint="@string/password"-->
+<!--                    android:textSize="13sp"-->
+<!--                    android:fontFamily="@font/vagroundedstd_thin"-->
+<!--                    android:textColor="@color/colorGreyWhite"-->
+<!--                    android:textColorHint="@color/colorGreyWhite"-->
+<!--                    />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+        </LinearLayout>
+
 
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
