@@ -11,11 +11,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.dinda.MainActivity;
+import com.example.dinda.Model.PostRegister;
 import com.example.dinda.Popup.LayoutPopupError;
 import com.example.dinda.R;
+import com.example.dinda.Rest.ApiInterface;
 import com.example.dinda.ServerSide.SetKeyboard;
 import com.example.dinda.ServerSide.URLApk;
 import com.example.dinda.Tabs.DashboardActivity;
@@ -28,10 +32,13 @@ import java.util.Calendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
 
-
+    ApiInterface mApiInterface;
     @BindView(R.id.tiedt_name)
     TextInputEditText etName;
     @BindView(R.id.til_name)
@@ -58,33 +65,58 @@ public class LoginFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         ButterKnife.bind(this, view);
         return view;
     }
 
+
+    public void _alert(String _message) {
+        LayoutPopupError lpeLogin = new LayoutPopupError(getActivity());
+        lpeLogin.setCancelable(true);
+        lpeLogin.showDialog();
+        lpeLogin.tvTitle.setText("Kesalahan");
+        lpeLogin.tvKeterangan.setText(Html.fromHtml(_message));
+        lpeLogin.btnPositive.setVisibility(View.GONE);
+        lpeLogin.btnNegativie.setVisibility(View.VISIBLE);
+        lpeLogin.btnNegativie.setText("TUTUP");
+        lpeLogin.btnNegativie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lpeLogin.dismissDialog();
+            }
+        });
+    }
+
     @OnClick(R.id.btn_login)
     public void onViewClickedLogin() {
-        if (etName.getText().toString().isEmpty() && tvTglLahir.getText().toString().isEmpty()) {
-            LayoutPopupError lpeLogin = new LayoutPopupError(getActivity());
-            lpeLogin.setCancelable(true);
-            lpeLogin.showDialog();
-            lpeLogin.tvTitle.setText("Kesalahan");
-            lpeLogin.tvKeterangan.setText(Html.fromHtml("Username dan password <br/>tidak boleh kosong."));
-            lpeLogin.btnPositive.setVisibility(View.GONE);
-            lpeLogin.btnNegativie.setVisibility(View.VISIBLE);
-            lpeLogin.btnNegativie.setText("TUTUP");
-            lpeLogin.btnNegativie.setOnClickListener(new View.OnClickListener() {
+        String _message="";
+        if (etName.getText().toString().length() !=6 ) {
+           _message = "NPK harus 6 digit.<br>";
+        }
+        if (tvTglLahir.getText().toString().isEmpty()) {
+            _message += "Tanggal Lahir harus diisi.<br>";
+        }
+        if(_message.length()>0) {
+            _alert(_message);
+        }
+        else {
+            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString());
+            postRegisterCall.enqueue(new Callback<PostRegister>() {
                 @Override
-                public void onClick(View v) {
-                    lpeLogin.dismissDialog();
+                public void onResponse(Call<PostRegister> call, Response<PostRegister> response) {
+//                    MainActivity.ma.refresh();
+//                    finish();
+                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onFailure(Call<PostRegister> call, Throwable t) {
+                    _alert("undefined");
                 }
             });
-        } else {
-
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-            startActivity(intent);
         }
     }
 
@@ -110,7 +142,6 @@ public class LoginFragment extends Fragment {
                  */
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-
                 /**
                  * Update TextView dengan tanggal yang kita pilih
                  */
@@ -121,6 +152,14 @@ public class LoginFragment extends Fragment {
         /**
          * Tampilkan DatePicker dialog
          */
+
+        // Set the Calendar new date as minimum date of date picker
+        newCalendar.add(Calendar.YEAR, -60);
+        datePickerDialog.getDatePicker().setMinDate(newCalendar.getTimeInMillis());
+        newCalendar.add(Calendar.YEAR, 43);
+        datePickerDialog.getDatePicker().setMaxDate(newCalendar.getTimeInMillis());
+
+
         datePickerDialog.show();
 
         //hide keyboard
