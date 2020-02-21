@@ -1,28 +1,30 @@
 package com.example.dinda.Fragment;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
-import android.content.Intent;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.example.dinda.MainActivity;
+import com.example.dinda.Libraries.Imei;
 import com.example.dinda.Model.PostRegister;
 import com.example.dinda.Popup.LayoutPopupError;
 import com.example.dinda.R;
+import com.example.dinda.Rest.ApiClient;
 import com.example.dinda.Rest.ApiInterface;
-import com.example.dinda.ServerSide.SetKeyboard;
-import com.example.dinda.ServerSide.URLApk;
-import com.example.dinda.Tabs.DashboardActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -36,6 +38,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static java.lang.Boolean.TRUE;
+
 public class LoginFragment extends Fragment {
 
     ApiInterface mApiInterface;
@@ -45,7 +49,7 @@ public class LoginFragment extends Fragment {
     TextInputLayout tilName;
     @BindView(R.id.tv_tgl_lahir)
     TextView tvTglLahir;
-//    @BindView(R.id.til_pass)
+    //    @BindView(R.id.til_pass)
 //    TextInputLayout tilPass;
     //    @BindView(R.id.cb_show_hide_pass)
 //    CheckBox cbShowHidePass;
@@ -57,6 +61,7 @@ public class LoginFragment extends Fragment {
 //    RelativeLayout rlTglLahir;
 
     SimpleDateFormat simpleDateFormat;
+    String imei= null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,8 +71,11 @@ public class LoginFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
         ButterKnife.bind(this, view);
+
+
+        imei = Imei.getImei(getActivity());
+        Log.e("imei", imei);
         return view;
     }
 
@@ -89,27 +97,33 @@ public class LoginFragment extends Fragment {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @OnClick(R.id.btn_login)
     public void onViewClickedLogin() {
-        String _message="";
-        if (etName.getText().toString().length() !=6 ) {
-           _message = "NPK harus 6 digit.<br>";
+        String _message = "";
+        if (etName.getText().toString().length() != 6) {
+            _message = "NPK harus 6 digit.<br>";
         }
         if (tvTglLahir.getText().toString().isEmpty()) {
             _message += "Tanggal Lahir harus diisi.<br>";
         }
-        if(_message.length()>0) {
+        if (_message.length() > 0) {
             _alert(_message);
-        }
-        else {
-            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString());
+        } else {
+
+            mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString(),imei );
             postRegisterCall.enqueue(new Callback<PostRegister>() {
                 @Override
                 public void onResponse(Call<PostRegister> call, Response<PostRegister> response) {
 //                    MainActivity.ma.refresh();
 //                    finish();
-                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
-                    startActivity(intent);
+                    String _result = response.body().getStatus();
+                    if( _result != "ok" ) {
+                        _alert( _result );
+                    }
+//                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
+//                    startActivity(intent);
                 }
 
                 @Override

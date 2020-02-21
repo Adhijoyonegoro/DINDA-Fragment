@@ -1,8 +1,8 @@
-package com.example.dinda.ServerSide;
+package com.example.dinda.Libraries;
 
-public class URLApk {
-    public static final String root = "http://dinda.astra-agro.co.id/dinda/api/mobile/";
-    public static final String root1 = "http://10.23.0.165/dinda/api/mobile/";
+public class Config {
+    public static final String ApiURL = "http://dinda.astra-agro.co.id/dinda/api/mobile/";
+    public static final String ApiURLDev = "http://10.23.0.165/dinda/api/mobile/";
 //    public static final String insertDataJson = root+"V1/index_post";
 //    public static final String getDataSupplier = root+"V1/index_get?SITECODE=";
 //    public static final String getUpdateVersi = root+"/transaksiJSON";

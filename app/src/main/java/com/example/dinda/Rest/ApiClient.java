@@ -1,12 +1,12 @@
 package com.example.dinda.Rest;
 
-import com.example.dinda.ServerSide.URLApk;
+import com.example.dinda.Libraries.Config;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    public static final String BASE_URL = URLApk.root1;
+    public static final String BASE_URL = Config.ApiURLDev;
     private static Retrofit retrofit = null;
     public static Retrofit getClient() {
         if (retrofit==null) {

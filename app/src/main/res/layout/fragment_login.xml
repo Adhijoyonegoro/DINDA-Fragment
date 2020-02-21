@@ -39,6 +39,7 @@
                 android:fontFamily="@font/vagroundedstd_thin"
                 android:textColor="@color/colorGreyWhite"
                 android:textColorHint="@color/colorGreyWhite"
+                android:text="712580"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -73,6 +74,7 @@
                 android:textSize="13sp"
                 android:fontFamily="@font/vagroundedstd_thin"
                 android:textColor="@color/colorGreyWhite"
+                android:text="25-12-1978"
                 />
             <View
                 android:layout_width="match_parent"

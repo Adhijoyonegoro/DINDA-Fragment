@@ -1,4 +1,4 @@
-package com.example.dinda.ServerSide;
+package com.example.dinda.Libraries;
 
 public class Utils {
 

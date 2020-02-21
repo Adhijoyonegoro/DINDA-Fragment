@@ -14,11 +14,14 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 
 public interface ApiInterface {
-    @GET("profile_template_clean")
-    Call<GetData> getData();
+//    @GET("profile_template_clean")
+//    Call<GetData> getData();
 //    Call<List<Kontak>> getKontak();
     @FormUrlEncoded
-    @POST("register")
-    Call<PostRegister> postRegister(@Field("npk") String npk,
-                                    @Field("dob") String dob);
+    @POST("register_clean")
+    Call<PostRegister> postRegister(
+        @Field("npk") String npk,
+        @Field("dob") String dob,
+        @Field("imei") String imei
+    );
 }

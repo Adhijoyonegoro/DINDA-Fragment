@@ -1,4 +1,4 @@
-package com.example.dinda.ServerSide;
+package com.example.dinda.Libraries;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
