@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.dinda.Fragment.LoginFragment;
+import com.example.dinda.Libraries.Imei;
 import com.example.dinda.R;
 import com.example.dinda.Libraries.Utils;
 
@@ -28,5 +30,7 @@ public class MenuActivity extends AppCompatActivity {
                             Utils.LoginFragment).commit();
 
         }
+
+
     }
 }

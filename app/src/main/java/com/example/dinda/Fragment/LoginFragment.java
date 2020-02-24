@@ -3,6 +3,8 @@ package com.example.dinda.Fragment;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,15 +18,21 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.dinda.Libraries.ApiStatus;
 import com.example.dinda.Libraries.Imei;
 import com.example.dinda.Model.PostRegister;
 import com.example.dinda.Popup.LayoutPopupError;
 import com.example.dinda.R;
 import com.example.dinda.Rest.ApiClient;
 import com.example.dinda.Rest.ApiInterface;
+import com.example.dinda.Tabs.DashboardActivity;
+import com.example.dinda.Tabs.MenuActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -60,6 +68,7 @@ public class LoginFragment extends Fragment {
 //    @BindView(R.id.rl_tgl_lahir)
 //    RelativeLayout rlTglLahir;
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
     SimpleDateFormat simpleDateFormat;
     String imei= null;
 
@@ -73,11 +82,85 @@ public class LoginFragment extends Fragment {
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ButterKnife.bind(this, view);
 
+        loadIMEI();
 
-        imei = Imei.getImei(getActivity());
-        Log.e("imei", imei);
         return view;
     }
+
+    public void loadIMEI() {
+        // Check if the READ_PHONE_STATE permission is already available.
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            // READ_PHONE_STATE permission has not been granted.
+            requestReadPhoneStatePermission();
+        } else {
+            // READ_PHONE_STATE permission is already been granted.
+            Log.e("imei", Imei.getUniqueIMEIId(getActivity()));
+        }
+    }
+
+    private void requestReadPhoneStatePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                Manifest.permission.READ_PHONE_STATE)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // For example if the user has previously denied the permission.
+            new AlertDialog.Builder(getActivity())
+                    .setTitle("Permission Request")
+                    .setMessage("tidak dapat permission")
+                    .setCancelable(false)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //re-request
+                            ActivityCompat.requestPermissions(getActivity(),
+                                    new String[]{Manifest.permission.READ_PHONE_STATE},
+                                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+                        }
+                    })
+                    .setIcon(R.drawable.asset01)
+                    .show();
+        } else {
+            // READ_PHONE_STATE permission has not been granted yet. Request it directly.
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_PHONE_STATE},
+                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+            Log.e("imei", Imei.getUniqueIMEIId(getActivity()));
+        }
+    }
+
+    /**
+     * Callback received when a permissions request has been completed.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+
+        if (requestCode == MY_PERMISSIONS_REQUEST_READ_PHONE_STATE) {
+            // Received permission result for READ_PHONE_STATE permission.est.");
+            // Check if the only required permission has been granted
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // READ_PHONE_STATE permission has been granted, proceed with displaying IMEI Number
+                //alertAlert(getString(R.string.permision_available_read_phone_state));
+                Log.e("imei", Imei.getUniqueIMEIId(getActivity()));
+            } else {
+                alertAlert("tidak dapat permission");
+            }
+        }
+    }
+
+    private void alertAlert(String msg) {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Permission Request")
+                .setMessage(msg)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do somthing here
+                    }
+                })
+                .setIcon(R.drawable.asset01)
+                .show();
+    }
+
 
 
     public void _alert(String _message) {
@@ -110,25 +193,30 @@ public class LoginFragment extends Fragment {
         if (_message.length() > 0) {
             _alert(_message);
         } else {
-
+            imei = Imei.getUniqueIMEIId(getActivity());
+            Log.i("imei", imei);
             mApiInterface = ApiClient.getClient().create(ApiInterface.class);
             Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString(),imei );
             postRegisterCall.enqueue(new Callback<PostRegister>() {
+
                 @Override
                 public void onResponse(Call<PostRegister> call, Response<PostRegister> response) {
 //                    MainActivity.ma.refresh();
 //                    finish();
+                    Log.i("api_register", response.body().getData().toString());
                     String _result = response.body().getStatus();
-                    if( _result != "ok" ) {
+                    if( _result != ApiStatus.register_success ) {
                         _alert( _result );
                     }
-//                    Intent intent = new Intent(getActivity(), DashboardActivity.class);
-//                    startActivity(intent);
+                    else {
+                        Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                        startActivity(intent);
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<PostRegister> call, Throwable t) {
-                    _alert("undefined");
+                    _alert(t.getMessage());
                 }
             });
         }

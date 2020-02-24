@@ -3,11 +3,13 @@ package com.example.dinda.Model;
 import com.example.dinda.Libraries.ApiStatus;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class PostRegister {
     @SerializedName("status")
     String status;
     @SerializedName("data")
-    String mData;
+    List<Employee> listEmployee;
 
     public String getStatus() {
         switch (status) {
@@ -26,8 +28,8 @@ public class PostRegister {
         return status;
     }
 
-    public String getData() {
-        return mData;
+    public List<Employee> getData() {
+        return listEmployee;
     }
 
 //    public void setStatus(String status) {
