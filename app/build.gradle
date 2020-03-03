@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.dinda"
@@ -47,6 +47,9 @@ dependencies {
 
     //circleimage
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //loopj
+    implementation 'com.loopj.android:android-async-http:1.4.10'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'

@@ -17,14 +17,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.dinda.Libraries.ApiStatus;
+import com.example.dinda.Libraries.Config;
 import com.example.dinda.Libraries.Imei;
 import com.example.dinda.Model.PostRegister;
 import com.example.dinda.Popup.LayoutPopupError;
@@ -35,6 +39,12 @@ import com.example.dinda.Tabs.DashboardActivity;
 import com.example.dinda.Tabs.MenuActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,6 +52,7 @@ import java.util.Calendar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cz.msebera.android.httpclient.Header;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -195,28 +206,123 @@ public class LoginFragment extends Fragment {
         } else {
             imei = Imei.getUniqueIMEIId(getActivity());
             Log.i("imei", imei);
-            mApiInterface = ApiClient.getClient().create(ApiInterface.class);
-            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString(),imei );
-            postRegisterCall.enqueue(new Callback<PostRegister>() {
+//            mApiInterface = ApiClient.getClient().create(ApiInterface.class);
+//            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString(),imei );
+//            postRegisterCall.enqueue(new Callback<PostRegister>() {
+//
+//                @Override
+//                public void onResponse(Call<PostRegister> call, Response<PostRegister> response) {
+////                    MainActivity.ma.refresh();
+////                    finish();
+//                    Log.i("api_register", response.body().getData().toString());
+//                    String _result = response.body().getStatus();
+//                    if( _result != ApiStatus.register_success ) {
+//                        _alert( _result );
+//                    }
+//                    else {
+//                        Intent intent = new Intent(getActivity(), DashboardActivity.class);
+//                        startActivity(intent);
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<PostRegister> call, Throwable t) {
+//                    _alert(t.getMessage());
+//                }
+//            });
 
+            String url = Config.register;
+            AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
+            RequestParams params = new RequestParams();
+            try {
+                params.put("dob", tvTglLahir.getText().toString());
+                params.put("npk", etName.getText().toString());
+                params.put("imei", imei);
+            } catch (Exception e){
+                e.printStackTrace();
+                Log.e("error", String.valueOf(e instanceof Exception));
+            }
+
+            client.post(url, params, new AsyncHttpResponseHandler() {
                 @Override
-                public void onResponse(Call<PostRegister> call, Response<PostRegister> response) {
-//                    MainActivity.ma.refresh();
-//                    finish();
-                    Log.i("api_register", response.body().getData().toString());
-                    String _result = response.body().getStatus();
-                    if( _result != ApiStatus.register_success ) {
-                        _alert( _result );
-                    }
-                    else {
-                        Intent intent = new Intent(getActivity(), DashboardActivity.class);
-                        startActivity(intent);
+                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+//                    Log.e("status code", new String(responseBody));
+//                    Log.e("status code", String.valueOf(statusCode));
+                    if (statusCode == 201) {
+                        try {
+                            JSONObject datas = new JSONObject(new String(responseBody));
+                            Log.e("responseBody", datas.toString()+"-"+statusCode);
+                            JSONObject data = datas.getJSONObject("data");
+                            String companyOffice = data.getString("COMPANY_OFFICE");
+                            Toast.makeText(getActivity(), companyOffice, Toast.LENGTH_SHORT).show();
+
+//                            JSONObject response = datas.getJSONObject("response");
+//                            if (response.getInt("code") == 201) {
+//                                //success ke server
+////                                JSONObject success = datas.getJSONObject("success");
+////                            dSuccess += success.getInt("count");
+////                                if (success.getInt("count") > 0 ) {
+//
+////                                JSONArray data = success.getJSONArray("data");
+////                                Log.e("data array", String.valueOf(data.length()));
+////                                for (int i = 0; i < data.length(); i++) {
+////                                    JSONObject x = data.getJSONObject(i);
+////                                    int id = x.getInt("id");
+////                                    db.updateStatus(id, 0);
+////                                }
+////                                }
+//                                boolean update = db.updateStatusMitra(idMitra, 0);
+//                                if (update) {
+//                                    onResume();
+//                                    lplSend.llMessage.setVisibility(View.VISIBLE);
+//                                    Glide.with(ListDaftarMitra.this).asGif().load(R.drawable.asset_checklist).into(lplSend.ivLoading);
+//                                    lplSend.tvMessage.setText(Html.fromHtml("Berhasil kirim data"));
+//                                }
+//                            } else {
+//                                lplSend.llMessage.setVisibility(View.VISIBLE);
+//                                Glide.with(ListDaftarMitra.this).asGif().load(R.drawable.asset_error).into(lplSend.ivLoading);
+//                                lplSend.tvMessage.setText(Html.fromHtml("Gagal kirim data <br/>"+datas.getString("error")));
+//                                onResume();
+//
+//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                                    lplSend.ivList.setBackground(getResources().getDrawable(R.color.color004));
+//                                }
+//
+//                                lplSend.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarMitra.this, R.color.color004) );
+//
+//                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
                 @Override
-                public void onFailure(Call<PostRegister> call, Throwable t) {
-                    _alert(t.getMessage());
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    Log.e("status code", String.valueOf(statusCode));
+//                    if (statusCode == 400) {
+//                        try {
+//                            JSONObject datas = new JSONObject(new String(responseBody));
+//                            Log.e("responseBody", datas.toString()+"-"+statusCode);
+//                            JSONObject response = datas.getJSONObject("response");
+//                            if (response.getInt("code") == 202) {
+//                                lplSend.llMessage.setVisibility(View.VISIBLE);
+//                                Glide.with(ListDaftarMitra.this).asGif().load(R.drawable.asset_error).into(lplSend.ivLoading);
+//                                lplSend.tvMessage.setText(Html.fromHtml("Gagal kirim data <br/>"+datas.getString("error")));
+//                                onResume();
+//
+//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                                    lplSend.ivList.setBackground(getResources().getDrawable(R.color.color004));
+//                                }
+//
+//                                lplSend.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarMitra.this, R.color.color004) );
+//
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
                 }
             });
         }
