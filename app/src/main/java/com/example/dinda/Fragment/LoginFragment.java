@@ -30,11 +30,13 @@ import com.bumptech.glide.Glide;
 import com.example.dinda.Libraries.ApiStatus;
 import com.example.dinda.Libraries.Config;
 import com.example.dinda.Libraries.Imei;
+import com.example.dinda.Libraries.UserSession;
+import com.example.dinda.Libraries.Utils;
 import com.example.dinda.Model.PostRegister;
 import com.example.dinda.Popup.LayoutPopupError;
 import com.example.dinda.R;
-import com.example.dinda.Rest.ApiClient;
-import com.example.dinda.Rest.ApiInterface;
+//import com.example.dinda.Rest.ApiClient;
+//import com.example.dinda.Rest.ApiInterface;
 import com.example.dinda.Tabs.DashboardActivity;
 import com.example.dinda.Tabs.MenuActivity;
 import com.google.android.material.textfield.TextInputEditText;
@@ -53,15 +55,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cz.msebera.android.httpclient.Header;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static java.lang.Boolean.TRUE;
 
 public class LoginFragment extends Fragment {
 
-    ApiInterface mApiInterface;
+//    ApiInterface mApiInterface;
     @BindView(R.id.tiedt_name)
     TextInputEditText etName;
     @BindView(R.id.til_name)
@@ -89,6 +88,12 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+        UserSession userSession = new UserSession(getContext());
+
+        if( userSession.getNPK().length() == 6 ) {
+            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            startActivity(intent);
+        }
 
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         ButterKnife.bind(this, view);
@@ -153,12 +158,12 @@ public class LoginFragment extends Fragment {
                 //alertAlert(getString(R.string.permision_available_read_phone_state));
                 Log.e("imei", Imei.getUniqueIMEIId(getActivity()));
             } else {
-                alertAlert("tidak dapat permission");
+                _alertPermission("tidak dapat permission");
             }
         }
     }
 
-    private void alertAlert(String msg) {
+    private void _alertPermission(String msg) {
         new AlertDialog.Builder(getActivity())
                 .setTitle("Permission Request")
                 .setMessage(msg)
@@ -173,23 +178,23 @@ public class LoginFragment extends Fragment {
     }
 
 
-
-    public void _alert(String _message) {
-        LayoutPopupError lpeLogin = new LayoutPopupError(getActivity());
-        lpeLogin.setCancelable(true);
-        lpeLogin.showDialog();
-        lpeLogin.tvTitle.setText("Kesalahan");
-        lpeLogin.tvKeterangan.setText(Html.fromHtml(_message));
-        lpeLogin.btnPositive.setVisibility(View.GONE);
-        lpeLogin.btnNegativie.setVisibility(View.VISIBLE);
-        lpeLogin.btnNegativie.setText("TUTUP");
-        lpeLogin.btnNegativie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lpeLogin.dismissDialog();
-            }
-        });
-    }
+//
+//    public void _alert(String _message) {
+//        LayoutPopupError lpeLogin = new LayoutPopupError(getActivity());
+//        lpeLogin.setCancelable(true);
+//        lpeLogin.showDialog();
+//        lpeLogin.tvTitle.setText("Kesalahan");
+//        lpeLogin.tvKeterangan.setText(Html.fromHtml(_message));
+//        lpeLogin.btnPositive.setVisibility(View.GONE);
+//        lpeLogin.btnNegativie.setVisibility(View.VISIBLE);
+//        lpeLogin.btnNegativie.setText("TUTUP");
+//        lpeLogin.btnNegativie.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                lpeLogin.dismissDialog();
+//            }
+//        });
+//    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @OnClick(R.id.btn_login)
@@ -202,10 +207,11 @@ public class LoginFragment extends Fragment {
             _message += "Tanggal Lahir harus diisi.<br>";
         }
         if (_message.length() > 0) {
-            _alert(_message);
+            Utils._alert(getActivity(), _message);
         } else {
             imei = Imei.getUniqueIMEIId(getActivity());
             Log.i("imei", imei);
+
 //            mApiInterface = ApiClient.getClient().create(ApiInterface.class);
 //            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString(),imei );
 //            postRegisterCall.enqueue(new Callback<PostRegister>() {
@@ -231,7 +237,7 @@ public class LoginFragment extends Fragment {
 //                }
 //            });
 
-            String url = Config.register;
+            String url = Config.ApiURLRegister;
             AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
             RequestParams params = new RequestParams();
             try {
@@ -245,16 +251,42 @@ public class LoginFragment extends Fragment {
 
             client.post(url, params, new AsyncHttpResponseHandler() {
                 @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                public void onSuccess(int responseCode, Header[] headers, byte[] responseBody) {
 //                    Log.e("status code", new String(responseBody));
 //                    Log.e("status code", String.valueOf(statusCode));
-                    if (statusCode == 201) {
+                    if (responseCode == 201) {
                         try {
-                            JSONObject datas = new JSONObject(new String(responseBody));
-                            Log.e("responseBody", datas.toString()+"-"+statusCode);
-                            JSONObject data = datas.getJSONObject("data");
-                            String companyOffice = data.getString("COMPANY_OFFICE");
-                            Toast.makeText(getActivity(), companyOffice, Toast.LENGTH_SHORT).show();
+                            String _status="success";
+                            JSONObject _responseObj = new JSONObject(new String(responseBody));
+//                            Log.e("responseBody", _responseObj.toString()+"-"+responseCode);
+                            String _statusCode = _responseObj.getString("status");
+//                            Log.e( "status", _statusCode );
+
+                            if( _statusCode.equals("success")) {
+                                JSONObject data = _responseObj.getJSONObject("data");
+
+                                UserSession userSession = new UserSession(getContext());
+                                userSession.setNama(data.getString("NAMA"));
+                                userSession.setNPK(data.getString("EMP_NO"));
+                                userSession.setCompanyOffice(data.getString("COMPANY_OFFICE"));
+                                userSession.setPosCode(data.getString("POS_CODE"));
+                                userSession.setPosTitle(data.getString("POS_TITLE"));
+
+                                Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                switch (_statusCode) {
+                                    case "imei_ganda":
+                                        _status = ApiStatus.imei_ganda;
+                                        break;
+                                    case "invalid":
+                                        _status = ApiStatus.register_invalid;
+                                        break;
+                                }
+//                                _alert(  );
+                                Utils._alert(getActivity(), _status);
+                            }
 
 //                            JSONObject response = datas.getJSONObject("response");
 //                            if (response.getInt("code") == 201) {

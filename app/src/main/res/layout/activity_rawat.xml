@@ -51,7 +51,7 @@
                 />
 
             <TextView
-                android:id="@+id/text3"
+                android:id="@+id/txtHeader"
                 android:layout_below="@id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/btn_kembali"
+            android:id="@+id/btnPrior"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginRight="5dp"
@@ -200,7 +200,7 @@
 
         <Button
             android:layout_weight="1"
-            android:id="@+id/btn_lanjut"
+            android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:background="@drawable/btn_login_selector_black"

@@ -2,6 +2,7 @@ package com.example.dinda.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,23 +70,24 @@ public class AdapterDashboard extends RecyclerView.Adapter<AdapterDashboard.Hold
 //                    fragmentTransaction.commit();
 //                }
 //                else
-                if (x.getId() == 0) {
+                if (x.getId() < 90) {
                     Intent intent = new Intent(context, PanenActivity.class);
+                    intent.putExtra("HEADER", x.getTitle());
                     context.startActivity(intent);
                 }
-                if (x.getId() == 1) {
-                    Intent intent = new Intent(context, RawatActivity.class);
-                    context.startActivity(intent);
-                }
-                if (x.getId() == 2) {
-                    Intent intent = new Intent(context, ProsesActivity.class);
-                    context.startActivity(intent);
-                }
-                if (x.getId() == 8) {
+//                if (x.getId() == 1) {
+//                    Intent intent = new Intent(context, RawatActivity.class);
+//                    context.startActivity(intent);
+//                }
+//                if (x.getId() == 2) {
+//                    Intent intent = new Intent(context, ProsesActivity.class);
+//                    context.startActivity(intent);
+//                }
+                if (x.getId() == 90) {
                     Intent intent = new Intent(context, HistoryActivity.class);
                     context.startActivity(intent);
                 }
-                if (x.getId() == 9) {
+                if (x.getId() == 91) {
                     Intent intent = new Intent(context, ProfileActivity.class);
                     context.startActivity(intent);
                 }
