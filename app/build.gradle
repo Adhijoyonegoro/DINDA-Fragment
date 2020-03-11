@@ -7,7 +7,7 @@ android {
         applicationId "com.example.dinda"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 1
+        versionCode 300
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -48,7 +48,14 @@ dependencies {
     //circleimage
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    //loopj
+    implementation 'com.loopj.android:android-async-http:1.4.10'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+//    implementation 'com.squareup.retrofit2:retrofit:2.6.4'
+//    implementation 'com.squareup.retrofit2:converter-gson:2.6.4'
+
 }

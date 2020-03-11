@@ -1,4 +1,4 @@
-package com.example.dinda.ServerSide;
+package com.example.dinda.Libraries;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -62,84 +62,35 @@ public class UserSession {
     public void setNama(String nama) {
         setSession("nama", nama);
     }
-
     public String getNama(){
         return getSession("nama");
     }
 
-    public void setSite(String site) {
-        setSession("site", site);
+    public void setCompanyOffice(String companyOffice) { setSession("companyOffice", companyOffice); }
+    public String getCompanyOffice(){
+        return getSession("companyOffice");
     }
 
-    public String getSite(){
-        return getSession("site");
+    public void setNPK(String npk) {
+        setSession("npk", npk);
+    }
+    public String getNPK() {
+        return getSession("npk");
     }
 
-    public void setJabatan(String jabatan) {
-        setSession("jabatan", jabatan);
+    public void setPosCode(String posCode) {
+        setSession("posCode", posCode);
+    }
+    public String getPosCode(){
+        return getSession("posCode");
     }
 
-    public String getJabatan() {
-        return getSession("jabatan");
+    public void setPosTitle(String posTitle) {
+        setSession("posTitle", posTitle);
     }
-
-    public void setUserId(String userId) {
-        setSession("userId", userId);
+    public String getPosTitle(){
+        return getSession("posTitle");
     }
-
-    public String getUserId(){
-        return getSession("userId");
-    }
-
-    public void setPass(String pass) {
-        setSession("pass", pass);
-    }
-
-    public String getPass(){
-        return getSession("pass");
-    }
-
-    public void setPhoto(String photo) {
-        setSession("photo", photo);
-    }
-
-    public String getPhoto(){
-        return getSession("photo");
-    }
-
-//    public void setEmpNo(String empNo) {
-//        setSession("empNo", empNo);
-//    }
-//
-//    public String getEmpNo(){
-//        return getSession("empNo");
-//    }
-//
-//
-//
-//    public void setCompanyId(String site) {
-//        setSession("companyID", site);
-//    }
-//
-//    public String getCompanyId(){
-//        return getSession("companyID");
-//    }
-//
-//
-//
-//    public void setKdKaryawan(String kdKaryawan) {
-//        setSession("kdKaryawan", kdKaryawan);
-//    }
-//
-//    public String getKdKaryawan(){
-//        return getSession("kdKaryawan");
-//    }
-
-
-
-
-
-
 }
 
 

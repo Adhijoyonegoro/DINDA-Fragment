@@ -51,49 +51,46 @@
                 />
 
             <TextView
-                android:id="@+id/text3"
-                android:layout_below="@id/icon"
+                android:id="@+id/txtHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PANEN"
+                android:layout_below="@id/icon"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp"
                 android:fontFamily="@font/vagroundedstd_bold"
-                />
+                android:text="PANEN KTS OA"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/lvPT"
-            android:layout_below="@id/corner"
-            android:layout_toRightOf="@id/lvHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_below="@id/corner"
             android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/lvHeader"
+            android:orientation="vertical"
             android:paddingLeft="5dp"
-            >
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/asset015"
                 android:paddingBottom="5dp"
-                android:visibility="invisible"
-                />
+                android:src="@drawable/asset015"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/txtPT"
-                android:layout_below="@id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KTS"
+                android:layout_below="@id/icon"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp"
                 android:fontFamily="@font/vagroundedstd_bold"
-                />
+                android:text="KTS"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -109,107 +106,107 @@
         >
 
         <TextView
+            android:id="@+id/txtQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginBottom="30dp"
+            android:fontFamily="@font/vagroundedstd_bold"
+            android:gravity="center"
             android:padding="10dp"
             android:text="Jam Start Proses - Line 1"
-            android:textSize="18sp"
             android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/vagroundedstd_bold"
-            />
+            android:textSize="18sp"
+            android:visibility="visible" />
 
         <Switch
+            android:id="@+id/rbKegiatan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            />
+            tools:checked="false" />
 
         <EditText
+            android:id="@+id/editAnswerTime"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/el_bg"
+            android:fontFamily="@font/vagroundedstd_thin"
             android:gravity="center"
-            android:padding="10dp"
-            android:singleLine="true"
             android:inputType="time"
-            android:textSize="40sp"
+            android:padding="10dp"
+            android:singleLine="true"
             android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/vagroundedstd_thin"
-            android:background="@drawable/el_bg"
-            android:visibility="visible"
-            />
+            android:textSize="40sp"
+            android:visibility="visible" />
 
         <EditText
+            android:id="@+id/editAnswerNumber"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/el_bg"
+            android:fontFamily="@font/vagroundedstd_thin"
             android:gravity="center"
+            android:inputType="number"
             android:padding="10dp"
             android:singleLine="true"
-            android:inputType="number"
-            android:tooltipText="@string/username"
-            android:textSize="40sp"
             android:textColor="@color/colorPrimaryDark"
-            android:fontFamily="@font/vagroundedstd_thin"
-            android:background="@drawable/el_bg"
-            android:visibility="gone"
-            />
+            android:textSize="40sp"
+            android:tooltipText="@string/username"
+            android:visibility="gone" />
 
         <TextView
+            android:id="@+id/txtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="70dp"
             android:layout_marginLeft="70dp"
-            android:gravity="center"
             android:layout_marginTop="50dp"
+            android:layout_marginRight="70dp"
+            android:fontFamily="@font/vagroundedstd_thin"
+            android:gravity="center"
             android:text="Aktifkan jika ada kegiatan, nonaktifkan jika tidak ada kegiatan yang diinput"
             android:textSize="12dp"
-            android:textStyle="italic"
-            android:fontFamily="@font/vagroundedstd_thin"
-            />
+            android:textStyle="italic" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:paddingBottom="20dp"
-        android:layout_alignParentBottom="true"
         android:gravity="bottom"
-        android:weightSum="2"
-        >
+        android:paddingBottom="20dp"
+        android:visibility="visible"
+        android:weightSum="2">
 
         <Button
-            android:layout_weight="1"
-            android:id="@+id/btn_kembali"
+            android:id="@+id/btnPrior"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginRight="5dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_login_selector_stroke"
+            android:fontFamily="@font/vagroundedstd_thin"
             android:padding="3dp"
             android:text="Kembali"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="13sp"
-            android:fontFamily="@font/vagroundedstd_thin"
-            />
+            android:textSize="13sp" />
 
         <Button
-            android:layout_weight="1"
-            android:id="@+id/btn_lanjut"
+            android:id="@+id/btnNext"
             android:layout_width="match_parent"
             android:layout_height="36dp"
+            android:layout_weight="1"
             android:background="@drawable/btn_login_selector_black"
+            android:fontFamily="@font/vagroundedstd_thin"
             android:padding="3dp"
             android:text="Lanjut"
             android:textColor="@color/colorWhiteGreyfish"
-            android:textSize="13sp"
-            android:fontFamily="@font/vagroundedstd_thin"
-            />
+            android:textSize="13sp" />
 
     </LinearLayout>
 
