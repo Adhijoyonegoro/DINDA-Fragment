@@ -97,11 +97,13 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/ll_content"
         android:layout_below="@id/rl_1"
+        android:layout_above="@id/ll_footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         >
 
@@ -124,9 +126,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone"
-            tools:checked="false" />
-
-        <EditText
+            tools:checked="true" />
+        <TextView
             android:id="@+id/editAnswerTime"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -140,7 +141,6 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="40sp"
             android:visibility="visible" />
-
         <EditText
             android:id="@+id/editAnswerNumber"
             android:layout_width="200dp"
@@ -156,29 +156,37 @@
             android:textSize="40sp"
             android:tooltipText="@string/username"
             android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/txtDescription"
-            android:layout_width="match_parent"
+        <ScrollView
             android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/corner"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="70dp"
-            android:fontFamily="@font/vagroundedstd_thin"
-            android:gravity="center"
-            android:text="Aktifkan jika ada kegiatan, nonaktifkan jika tidak ada kegiatan yang diinput"
-            android:textSize="12dp"
-            android:textStyle="italic" />
+            android:scrollbars="none"
+            android:overScrollMode="never">
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/vagroundedstd_thin"
+                android:gravity="center"
+                android:text="Aktifkan jika ada kegiatan, nonaktifkan jika tidak ada kegiatan yang diinput"
+                android:textSize="12dp"
+                android:textStyle="italic" />
+
+        </ScrollView>
+
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_footer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:gravity="bottom"
         android:paddingBottom="20dp"
         android:visibility="visible"
         android:weightSum="2">

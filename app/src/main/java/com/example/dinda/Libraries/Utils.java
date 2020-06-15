@@ -8,6 +8,7 @@ import com.example.dinda.Popup.LayoutPopupError;
 import com.example.dinda.Popup.LayoutPopupWarning;
 
 public class Utils {
+    static boolean choose = false;
 
     //Fragments Tags
     public static final String LoginFragment = "Login_Fragment";
@@ -47,5 +48,32 @@ public class Utils {
             }
         });
     }
-    
+
+    public static boolean _confirm(Activity activity, String _message) {
+        LayoutPopupWarning lpe = new LayoutPopupWarning(activity);
+        lpe.setCancelable(true);
+        lpe.showDialog();
+        lpe.tvTitle.setText("Konfirmasi");
+        lpe.tvKeterangan.setText(Html.fromHtml(_message));
+        lpe.btnPositive.setVisibility(View.VISIBLE);
+        lpe.btnNegativie.setVisibility(View.VISIBLE);
+        lpe.btnPositive.setText("YA");
+        lpe.btnNegativie.setText("TIDAK");
+        lpe.btnNegativie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choose = false;
+                lpe.dismissDialog();
+//                activity.finish();
+            }
+        });
+        lpe.btnPositive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choose = true;
+                lpe.dismissDialog();
+            }
+        });
+        return choose;
+    }
 }

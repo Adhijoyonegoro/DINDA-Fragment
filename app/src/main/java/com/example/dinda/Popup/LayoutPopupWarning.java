@@ -74,4 +74,6 @@ public class LayoutPopupWarning extends AlertDialog.Builder {
         alertDialog1.show();
     }
 
+    public void setCancelable(boolean b) {
+    }
 }
