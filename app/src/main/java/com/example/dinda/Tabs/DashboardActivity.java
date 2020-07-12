@@ -76,7 +76,7 @@ public class DashboardActivity extends AppCompatActivity {
         client.get(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int responseCode, Header[] headers, byte[] responseBody) {
-                Log.e("responseCode", String.valueOf(responseCode));
+//                Log.e("responseCode", String.valueOf(responseCode));
 
                 if (responseCode == 201) {
 //                    boolean hapus = db.deleteSupplier();
@@ -93,11 +93,11 @@ public class DashboardActivity extends AppCompatActivity {
 //                        Log.i( "status", _profile.toString() );
                         JSONArray _templateArray = _responseObj.getJSONArray("template");
 //                        Log.e( "status", _templateArray.toString() );
-                        String[] _paramTemplate = new String[13];
+                        String[] _paramTemplate = new String[14];
                         db.deleteTemplate();
                         for (int i = 0; i < _templateArray.length(); i++) {
                             JSONObject _templateObj = _templateArray.getJSONObject(i);
-                            Log.i( "insert", String.valueOf(i));
+//                            Log.i( "insert", String.valueOf(i));
 //                            for( int j =0; j < _paramTemplate.length; j++ )
 //                                _paramTemplate[j] = "ZZZ";
                             _paramTemplate[0] = _templateObj.getString("COMPANY_OFFICE");
@@ -113,8 +113,26 @@ public class DashboardActivity extends AppCompatActivity {
                             _paramTemplate[10] = _templateObj.getString("DI_ID_REF");
                             _paramTemplate[11] = _templateObj.getString("DESC_ID_REF");
                             _paramTemplate[12] = _templateObj.getString("URUT");
+                            _paramTemplate[13] = _templateObj.getString("CONDITIONAL");
 
                             db.insertTemplate(_paramTemplate);
+//                            Log.i( "isiARR", Arrays.toString(_paramTemplate));
+                        }
+
+                        String[] _paramProfile = new String[5];
+                        db.deleteProfile();
+                        for (int i = 0; i < _profileArray.length(); i++) {
+                            JSONObject _profileObj = _profileArray.getJSONObject(i);
+//                            Log.i( "insert", String.valueOf(i));
+//                            for( int j =0; j < _paramTemplate.length; j++ )
+//                                _paramTemplate[j] = "ZZZ";
+                            _paramProfile[0] = _profileObj.getString("PROFILE");
+                            _paramProfile[1] = _profileObj.getString("MODUL");
+                            _paramProfile[2] = _profileObj.getString("NORMA");
+                            _paramProfile[3] = _profileObj.getString("UOM");
+                            _paramProfile[4] = _profileObj.getString("URUT");
+
+                            db.insertProfile(_paramProfile);
 //                            Log.i( "isiARR", Arrays.toString(_paramTemplate));
                         }
                     } catch (JSONException e) {
@@ -135,7 +153,7 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-//                Log.e("status code", String.valueOf(statusCode));
+                Log.e("status code:", String.valueOf(statusCode));
 //                if (statusCode == 400) {
 //                    try {
 //                        JSONObject datas = new JSONObject(new String(responseBody));
@@ -211,7 +229,7 @@ public class DashboardActivity extends AppCompatActivity {
         Cursor cursor = db.getTemplateMenu();
         int i=0;
         if (cursor.moveToFirst()) {
-            int _icon=0;
+            int _icon;
             String[] _data = new String[3];
             do {
                 _data[0] = cursor.getString(cursor.getColumnIndex(db.KEY_TEMPLATE_KATEGORI1));

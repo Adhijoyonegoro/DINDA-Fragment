@@ -24,6 +24,7 @@ import com.example.dinda.Model.ModelDashboard;
 import com.example.dinda.Popup.LayoutPopupWarning;
 import com.example.dinda.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 
@@ -62,9 +63,10 @@ public class PanenActivity extends AppCompatActivity {
     private boolean validAnswer = true;
     private int invalid = 0;
 // validate
-    private String typeOperation, maxValue, tempValue, description;
+    private String typeOperation, maxValue, tempValue, description, condition, diIdRef, companyOffice, posCode, diId;
 
     ModelDashboard modelDashboard;
+    private String value="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +77,9 @@ public class PanenActivity extends AppCompatActivity {
 
         header = getIntent().getStringExtra("HEADER").trim();
         tvHeader.setText(header);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            tvDescription.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            tvDescription.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+//        }
         String[] _paramQuestion = header.split(" ");
         Cursor _cursor = db.getTemplateQuestionCount(_paramQuestion);
         if (_cursor.moveToFirst()) {
@@ -131,7 +133,7 @@ public class PanenActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        onViewClickedPrior();
+        PanenActivity.this.finish();
     }
 
     @OnClick(R.id.btnNext)
@@ -235,6 +237,10 @@ public class PanenActivity extends AppCompatActivity {
             seqQuestion+=_status;
 
             if (seqQuestion <= 1) {
+//                Calendar c = Calendar.getInstance();
+//                String tglNow = new SimpleDateFormat("EEEE, dd MMMM yyyy").format(c.getTime());
+
+                Log.e("PERTAMAX", "1");
                 seqQuestion = 1;
                 if (!rbKegiatan.isChecked())
                     PanenActivity.this.finish();
@@ -244,10 +250,29 @@ public class PanenActivity extends AppCompatActivity {
             }
             else {
                 btnPrior.setVisibility(View.VISIBLE);
+                if (typeOperation.equals("TIME")) {
+                    tempValue = etQuestionTime.getText().toString().trim();
+                }
+                else {
+                    tempValue = etQuestionNumber.getText().toString().trim();
+                }
+                Log.e( "tempValue:", tempValue );
+                String[] _paramAnswer = new String[6];
+                Calendar _c = Calendar.getInstance();
+                String _tdate = new SimpleDateFormat("yyyy-MM-dd").format(_c.getTime());
+                String _createdate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(_c.getTime());
+
+                _paramAnswer[0] = _tdate;
+                _paramAnswer[1] = companyOffice;
+                _paramAnswer[2] = posCode;
+                _paramAnswer[3] = diId;
+                _paramAnswer[4] = tempValue;
+                _paramAnswer[5] = _createdate;
+                db.insertKPI(_paramAnswer);
             }
-            Log.e("QUESTION2b", String.valueOf(seqQuestion));
+//            Log.e("QUESTION2b", String.valueOf(seqQuestion));
             if( questionCount >= seqQuestion ) {
-                Log.e("QUESTION2", String.valueOf(seqQuestion));
+//                Log.e("QUESTION2", String.valueOf(seqQuestion));
 //            if( validAnswer )
 //                seqQuestion++;
                 if (seqQuestion == 1) {
@@ -261,6 +286,7 @@ public class PanenActivity extends AppCompatActivity {
             }
             String _header = header + " " + seqQuestion;
             String[] _paramQuestion = _header.split(" ");
+
             Log.e("QUESTION2c", Arrays.toString(_paramQuestion));
 
             Cursor _cursor = db.getTemplateQuestion(_paramQuestion);
@@ -269,14 +295,21 @@ public class PanenActivity extends AppCompatActivity {
                 description = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DESC_OPERATION));
                 maxValue = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_MAX_VALUE));
                 typeOperation = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_TYPE_OPERATION));
-                tempValue = etQuestionNumber.getText().toString().trim();
+                condition = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_CONDITION));
+                diIdRef = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DI_ID_REF));
 
+                companyOffice = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_COMPANY_OFFICE));
+                posCode = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_POS_CODE));
+                diId = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DI_ID));
+                value = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_VALUE));
+//Log.e( "value:", value);
                 if (typeOperation.equals("INT")) {
 // INTEGER
                     etQuestionNumber.setVisibility(View.VISIBLE);
                     etQuestionTime.setVisibility(View.GONE);
                     etQuestionNumber.setInputType(InputType.TYPE_CLASS_NUMBER);
 
+                    etQuestionNumber.setText(value);
                 }
                 else if (typeOperation.equals("DIGIT")) {
 // FLOAT
@@ -286,26 +319,29 @@ public class PanenActivity extends AppCompatActivity {
 //                        seqQuestion--;
 //                    }
 //                }
-
                     etQuestionTime.setVisibility(View.GONE);
                     etQuestionNumber.setVisibility(View.VISIBLE);
                     etQuestionNumber.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+                    etQuestionNumber.setText(value);
                 }
                 else if (typeOperation.equals("TIME")) {
 // TIME
                     etQuestionTime.setVisibility(View.VISIBLE);
                     etQuestionNumber.setVisibility(View.GONE);
+                    etQuestionTime.setText(value);
                 }
                 else {
 // OTHER
                     etQuestionTime.setVisibility(View.GONE);
                     etQuestionNumber.setVisibility(View.VISIBLE);
                     etQuestionNumber.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+                    etQuestionNumber.setText(value);
                 }
                 description = description.equals("null") ? "" : description;
                 tvDescription.setText(description);
                 btnPrior.setText("KEMBALI");
-
             }
         }
     }

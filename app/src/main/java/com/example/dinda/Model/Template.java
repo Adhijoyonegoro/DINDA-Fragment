@@ -1,9 +1,9 @@
 package com.example.dinda.Model;
 
 public class Template {
-    String companyOffice, posCode, diId, kategori1, kategori2, uom, typeOperation, maxValue, descOperation, diIdRef, diIdDesc;
+    String companyOffice, posCode, diId, kategori1, kategori2, uom, typeOperation, maxValue, descOperation, diIdRef, diIdDesc, condition;
 
-    public Template(String companyOffice, String posCode, String diId, String kategori1, String kategori2, String uom, String typeOperation, String maxValue, String descOperation, String diIdRef, String diIdDesc) {
+    public Template(String companyOffice, String posCode, String diId, String kategori1, String kategori2, String uom, String typeOperation, String maxValue, String descOperation, String diIdRef, String diIdDesc, String condition) {
         this.companyOffice = companyOffice;
         this.posCode = posCode;
         this.diId = diId;
@@ -15,6 +15,7 @@ public class Template {
         this.descOperation = descOperation;
         this.diIdRef = diIdRef;
         this.diIdDesc = diIdDesc;
+        this.condition = condition;
     }
 
     public String getCompanyOffice() {
@@ -99,6 +100,14 @@ public class Template {
 
     public String getDiIdDesc() {
         return diIdDesc;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public void setDiIdDesc(String diIdDesc) {

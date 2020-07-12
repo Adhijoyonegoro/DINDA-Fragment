@@ -9,8 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -37,7 +39,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Common column names
     public static final String KEY_UOM = "UOM";
 
-
     // TABLE_M_TEMPLATE -  COLUMN NAMES
     public static final String KEY_TEMPLATE_COMPANY_OFFICE = "COMPANY_OFFICE";
     public static final String KEY_TEMPLATE_KATEGORI1 = "KATEGORI1";
@@ -52,6 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_TEMPLATE_DI_ID_REF = "DI_ID_REF";
     public static final String KEY_TEMPLATE_DESC_ID_REF = "DESC_ID_REF";
     public static final String KEY_TEMPLATE_URUT = "URUT";
+    public static final String KEY_TEMPLATE_CONDITION = "CONDITION";
 
     // TABLE_M_PROFILE - column names
     public static final String KEY_PROFILE_MODUL = "MODUL";
@@ -59,6 +61,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_PROFILE_NORMA = "NORMA";
     public static final String KEY_PROFILE_URUT = "URUT";
     public static final String KEY_PROFILE_UOM = "UOM";
+
+    // TABLE_T_TEMPLATE -  COLUMN NAMES
+    public static final String KEY_TEMPLATE_DATE = "TDATE";
+    public static final String KEY_TEMPLATE_CREATEDATE = "CREATEDATE";
+    public static final String KEY_TEMPLATE_VALUE = "VALUE";
 
     // VERSION_UPDATE Table = colmn names
     public static final String KEY_VERSION = "VERSION";
@@ -87,8 +94,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + KEY_TEMPLATE_DESC_OPERATION + " TEXT,"
             + KEY_TEMPLATE_DI_ID_REF + " TEXT,"
             + KEY_TEMPLATE_URUT + " NUMBER,"
+            + KEY_TEMPLATE_CONDITION + " TEXT,"
             + KEY_TEMPLATE_DESC_ID_REF + " TEXT"
         +")";
+
+    private static final String CREATE_TABLE_T_KPI = "CREATE TABLE "
+            + TABLE_T_KPI + "("
+            + KEY_TEMPLATE_DATE + " TEXT,"
+            + KEY_TEMPLATE_COMPANY_OFFICE + " TEXT,"
+            + KEY_TEMPLATE_POS_CODE + " TEXT,"
+            + KEY_TEMPLATE_DI_ID + " TEXT,"
+            + KEY_TEMPLATE_CREATEDATE + " TEXT,"
+            + KEY_TEMPLATE_VALUE + " TEXT,"
+            + "  PRIMARY KEY (TDATE, COMPANY_OFFICE, POS_CODE, DI_ID)"
+            +")";
+
 
     // MASTER table create statement
     private static final String CREATE_TABLE_M_PROFILE = "CREATE TABLE "
@@ -100,7 +120,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + KEY_PROFILE_UOM + " TEXT"
             + ")";
 
-//    // COUNT_FLAG_INPUT table create statement
+    private static final String ALTER_TEMPLATE_CONDITION = "ALTER TABLE "
+            + TABLE_M_TEMPLATE + " ADD COLUMN " + KEY_TEMPLATE_CONDITION + " string;";
+    //    // COUNT_FLAG_INPUT table create statement
 //    private static final String CREATE_TABLE_COUNT_FLAG_INPUT = "CREATE TABLE "
 //            + TABLE_COUNT_FLAG_INPUT + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 //            + KEY_CREATE_BY + " TEXT NOT NULL,"
@@ -128,17 +150,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_M_TEMPLATE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_M_PROFILE);
+        Log.e("create", CREATE_TABLE_T_KPI);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_T_KPI);
         db.execSQL(CREATE_TABLE_M_TEMPLATE);
-        Log.e("onCreate: ", CREATE_TABLE_M_TEMPLATE);
         db.execSQL(CREATE_TABLE_M_PROFILE);
+        db.execSQL(CREATE_TABLE_T_KPI);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_M_TEMPLATE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_M_PROFILE);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOG_PENGIRIMAN);
-        onCreate(db);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if (oldVersion < 2) {
+//            db.execSQL(ALTER_TEMPLATE_CONDITION);
+        }
+        if (oldVersion < 3) {
+//            db.execSQL(CREATE_TABLE_T_KPI);
+        }
+        if (oldVersion < 5) {
+//            db.execSQL("DROP TABLE IF EXISTS " + TABLE_T_KPI);
+//            db.execSQL(CREATE_TABLE_T_KPI);
+        }
     }
 
     public boolean insertTemplate(String[] param) {
@@ -159,6 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(KEY_TEMPLATE_DI_ID_REF, param[10]);
         contentValues.put(KEY_TEMPLATE_DESC_ID_REF, param[11]);
         contentValues.put(KEY_TEMPLATE_URUT, param[12]);
+        contentValues.put(KEY_TEMPLATE_CONDITION, param[13]);
         long result = db.insert(TABLE_M_TEMPLATE, null, contentValues);
         db.close();
         return result != -1;
@@ -176,17 +207,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getTemplateQuestion(String[] _args){
         SQLiteDatabase db = this.getReadableDatabase();
-        if( _args.length == 4 ) {
-            return db.rawQuery("SELECT * FROM " + TABLE_M_TEMPLATE + " WHERE KATEGORI1 = ? AND COMPANY_OFFICE = ? AND AFD = ? AND URUT = ?", _args);
+        if( _args.length == 4 ) { // kalo ada afdnya
+            return db.rawQuery("SELECT A.*, B.VALUE FROM " + TABLE_M_TEMPLATE + " A LEFT JOIN T_KPI B ON A.COMPANY_OFFICE=B.COMPANY_OFFICE AND A.POS_CODE=B.POS_CODE AND A.DI_ID=B.DI_ID WHERE KATEGORI1 = ? AND A.COMPANY_OFFICE = ? AND AFD = ? AND URUT = ?", _args);
         }
         else {
-            return db.rawQuery("SELECT * FROM " + TABLE_M_TEMPLATE + " WHERE KATEGORI1 = ? AND COMPANY_OFFICE = ?  AND URUT = ?", _args);
+            return db.rawQuery("SELECT A.*, B.VALUE FROM " + TABLE_M_TEMPLATE + " A LEFT JOIN T_KPI B ON A.COMPANY_OFFICE=B.COMPANY_OFFICE AND A.POS_CODE=B.POS_CODE AND A.DI_ID=B.DI_ID WHERE KATEGORI1 = ? AND A.COMPANY_OFFICE = ?  AND URUT = ?", _args);
         }
     }
 
     public Cursor getTemplateQuestionCount(String[] _args){
         SQLiteDatabase db = this.getReadableDatabase();
-        if( _args.length == 3 ) {
+        if( _args.length == 3 ) { // kalo ada afdnya
             return db.rawQuery("SELECT COUNT(*) AS ROWS FROM " + TABLE_M_TEMPLATE + " WHERE KATEGORI1 = ? AND COMPANY_OFFICE = ? AND AFD = ?", _args);
         }
         else {
@@ -199,6 +230,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM "+TABLE_M_TEMPLATE);
         db.close();
     }
+
+    public Cursor getProfile(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM "+TABLE_M_PROFILE+" ORDER BY MODUL, URUT", null);
+    }
+
+    public boolean insertKPI(String[] _args) {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] _items= new String[4];
+        _items[0] = _args[0];
+        _items[1] = _args[1];
+        _items[2] = _args[2];
+        _items[3] = _args[3];
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_TEMPLATE_DATE, _args[0]);
+        contentValues.put(KEY_TEMPLATE_COMPANY_OFFICE, _args[1]);
+        contentValues.put(KEY_TEMPLATE_POS_CODE, _args[2]);
+        contentValues.put(KEY_TEMPLATE_DI_ID, _args[3]);
+        contentValues.put(KEY_TEMPLATE_VALUE, _args[4]);
+//        contentValues.put(KEY_TEMPLATE_CREATEDATE, _args[5]);
+//
+        Cursor _cursor = db.rawQuery("SELECT COUNT(*) AS ROWS FROM " + TABLE_T_KPI + " WHERE TDATE = ? AND COMPANY_OFFICE = ? AND POS_CODE = ? AND DI_ID = ?", _items);
+        if (_cursor.moveToFirst()) {
+            int _answerd = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
+            if( _answerd == 0 )
+                contentValues.put(KEY_TEMPLATE_CREATEDATE, _args[5]);
+        }
+
+        long result = db.replace(TABLE_T_KPI, null, contentValues);
+        db.close();
+        return result != -1;
+//        return true;
+    }
+
+
+    public boolean insertProfile(String[] param) {
+        SQLiteDatabase db = getWritableDatabase();
+//        onCreate(db);
+        ContentValues contentValues = new ContentValues();
+//        Log.i("arr:", Arrays.toString(param));
+        contentValues.put(KEY_PROFILE_PROFILE, param[0]);
+        contentValues.put(KEY_PROFILE_MODUL, param[1]);
+        contentValues.put(KEY_PROFILE_NORMA, param[2]);
+        contentValues.put(KEY_PROFILE_UOM, param[3]);
+        contentValues.put(KEY_PROFILE_URUT, param[4]);
+        long result = db.insert(TABLE_M_PROFILE, null, contentValues);
+        db.close();
+        return result != -1;
+    }
+
+    public void deleteProfile(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM "+TABLE_M_PROFILE);
+        db.close();
+    }
+
 
 
 //    public boolean checkUserPassword(String empCode){

@@ -2,10 +2,10 @@ package com.example.dinda.Libraries;
 
 public class Config {
     public static final String ENV_STATUS = "DEVELOPMENT";
-/*PROD
+//*PROD
     public static final String ApiBaseURL = "http://dinda.astra-agro.co.id/dinda/api/mobile/";
 //*/
-//*DEV
+/*DEV
     public static final String ApiBaseURL = "http://10.23.0.165/dinda/api/mobile/";
 //*/
     public static final String ApiURLRegister = ApiBaseURL+"register_clean";
