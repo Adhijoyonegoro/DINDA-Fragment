@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteGreyfish"
+    tools:context=".Tabs.ProfileActivity"
+    >
+    <RelativeLayout
+        android:id="@+id/lv1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhiteGreyfish"
+        >
+
+        <LinearLayout
+            android:id="@+id/corner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:src="@drawable/asset014"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lvHeader"
+            android:layout_below="@id/corner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="25dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/asset015"
+                android:paddingBottom="5dp"
+                />
+
+            <TextView
+                android:id="@+id/txtHeader"
+                android:layout_below="@id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KAMERA"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:fontFamily="@font/vagroundedstd_bold"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/captured_photo"
+        android:layout_above="@id/ll_footer"
+        android:layout_below="@id/lv1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:padding="1dp"
+        android:contentDescription="captured image"
+        android:layout_alignParentStart="false" />
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:paddingBottom="4dp"
+        android:visibility="visible"
+        android:weightSum="2">
+    <Button
+        android:id="@+id/take_picture"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_login_selector_black"
+        android:padding="2dp"
+        android:text="FOTO"
+        android:textColor="@color/colorWhiteGreyfish"
+        android:textSize="13sp"
+        android:fontFamily="@font/vagroundedstd_thin"
+        />
+    </LinearLayout>
+</RelativeLayout>

@@ -38,6 +38,7 @@ import com.example.dinda.R;
 //import com.example.dinda.Rest.ApiClient;
 //import com.example.dinda.Rest.ApiInterface;
 import com.example.dinda.Tabs.DashboardActivity;
+import com.example.dinda.Tabs.FotoLoginActivity;
 import com.example.dinda.Tabs.MenuActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -91,7 +92,8 @@ public class LoginFragment extends Fragment {
         UserSession userSession = new UserSession(getContext());
 
         if( userSession.getNPK().length() == 6 ) {
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+//            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            Intent intent = new Intent(getActivity(), FotoLoginActivity.class);
             startActivity(intent);
         }
 

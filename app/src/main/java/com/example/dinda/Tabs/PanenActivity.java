@@ -64,6 +64,8 @@ public class PanenActivity extends AppCompatActivity {
     private int invalid = 0;
 // validate
     private String typeOperation, maxValue, tempValue, description, condition, diIdRef, companyOffice, posCode, diId;
+    Calendar c = Calendar.getInstance();
+    String tdate = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
 
     ModelDashboard modelDashboard;
     private String value="";
@@ -80,31 +82,65 @@ public class PanenActivity extends AppCompatActivity {
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //            tvDescription.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
 //        }
-        String[] _paramQuestion = header.split(" ");
-        Cursor _cursor = db.getTemplateQuestionCount(_paramQuestion);
-        if (_cursor.moveToFirst()) {
-            questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
-        }
-        Log.e("COUNT", String.valueOf(questionCount));
-        tvQuestion.setText("Ada kegiatan");
-        etQuestionNumber.setVisibility(View.GONE);
-        etQuestionTime.setVisibility(View.GONE);
-        tvDescription.setText("Aktifkan jika ada, nonaktifkan jika tidak ada.");
-        rbKegiatan.setVisibility(View.VISIBLE);
-        rbKegiatan.setChecked(true);
-        btnPrior.setText("BATAL");
+        String _header = tdate+" "+header;
+        String[] _cekAdaAnswer = _header.split(" ");
+        int _kegiatan = db.getKPIAnswerStatus( _cekAdaAnswer );
 
-        rbKegiatan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    tvQuestion.setText("Ada kegiatan");
+//        int _kegiatan=2;
+// 0 start, 1 ada kegiatan, 2 tidak ada kegiatan
+        if( _kegiatan == 0 ) {
+            tvQuestion.setText("Ada kegiatan");
+            etQuestionNumber.setVisibility(View.GONE);
+            btnNext.setText( "LANUT" );
+            etQuestionTime.setVisibility(View.GONE);
+            tvDescription.setText("Klik Lanjut untuk mengisi kegiatan.");
+            rbKegiatan.setVisibility(View.VISIBLE);
+            rbKegiatan.setChecked(true);
+            btnPrior.setVisibility(View.GONE);
+            rbKegiatan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        tvQuestion.setText("Ada kegiatan");
+                        tvDescription.setText("Klik Lanjut untuk mengisi kegiatan.");
+                        btnNext.setText( "LANUT" );
+                    }
+                    else {
+                        tvQuestion.setText("Tidak ada kegiatan");
+                        tvDescription.setText("Pilihan ini menyebabkan Anda tidak dapat mengisi kegiatan hari ini. Anda yakin?");
+                        btnNext.setText( "YA, SIMPAN TANPA KEGIATAN" );
+                    }
                 }
-                else {
-                    tvQuestion.setText("Tidak ada kegiatan");
-                }
+            });
+        }
+        else if ( _kegiatan == 1 ) {
+            rbKegiatan.setVisibility(View.GONE);
+            rbKegiatan.setChecked(true);
+            validAnswer=true;
+            btnNext.setText( "LANUT" );
+            String[] _paramQuestion = header.split(" ");
+            Log.e("QUESTION2c1", Arrays.toString(_paramQuestion));
+
+            Cursor _cursor = db.getTemplateQuestionCount(_paramQuestion);
+            if (_cursor.moveToFirst()) {
+                questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
             }
-        });
+            Log.e("COUNT", String.valueOf(questionCount));
+
+            //                btnPrior.setVisibility(View.GONE);
+//                Log.e("QUESTION1", String.valueOf(seqQuestion));
+            _displayQuestion(1);
+        }
+        else if ( _kegiatan == 2 ) {
+            tvQuestion.setText("Tidak Ada kegiatan");
+            etQuestionNumber.setVisibility(View.GONE);
+            etQuestionTime.setVisibility(View.GONE);
+            tvDescription.setText("Anda sudah memilih tidak ada kegiatan hari ini.");
+            rbKegiatan.setVisibility(View.GONE);
+            rbKegiatan.setChecked(true);
+            btnPrior.setVisibility(View.GONE);
+            btnNext.setText("TUTUP");
+        }
     }
 
     @OnClick(R.id.btnPrior)
@@ -138,43 +174,87 @@ public class PanenActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnNext)
     public void onViewClickedNext() {
-        if( rbKegiatan.getVisibility() == View.VISIBLE) {
-            if (!rbKegiatan.isChecked()) {
-                LayoutPopupWarning lpe = new LayoutPopupWarning(PanenActivity.this);
-                lpe.setCancelable(true);
-                lpe.showDialog();
-                lpe.tvTitle.setText("Konfirmasi");
-                lpe.tvKeterangan.setText(Html.fromHtml("Pilihan ini menyebabkan Anda tidak dapat mengisi kegiatan hari ini. Anda yakin?"));
-                lpe.btnPositive.setVisibility(View.VISIBLE);
-                lpe.btnNegativie.setVisibility(View.VISIBLE);
-                lpe.btnPositive.setText("YA");
-                lpe.btnNegativie.setText("TIDAK");
-                lpe.btnNegativie.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        lpe.dismissDialog();
+        if( btnNext.getText().toString() == "TUTUP" ) {
+            PanenActivity.this.finish();
+        }
+        else {
+            if (rbKegiatan.getVisibility() == View.VISIBLE) {
+                if (!rbKegiatan.isChecked()) {
+                    String _header = header;
+                    String _createdate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(c.getTime());
+                    String[] _items = _header.split(" ");
+                    String[] _paramAnswer = new String[5];
+                    if (_items.length == 3) {
+                        _paramAnswer[3] = _items[2]; // AFD
+                    } else {
+                        _paramAnswer[3] = ""; // AFD
                     }
-                });
-                lpe.btnPositive.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        tvQuestion.setText("Tidak ada kegiatan");
-                        btnNext.setVisibility(View.GONE);
-                        btnPrior.setText("TUTUP");
-                        rbKegiatan.setEnabled(false);
-                        tvDescription.setText("Anda telah memilih tidak ada kegiatan hari ini.");
-                        lpe.dismissDialog();
+                    _paramAnswer[0] = tdate;
+                    _paramAnswer[1] = _items[0]; // KATEGORI1
+                    _paramAnswer[2] = _items[1]; // COMPANY_OFFICE
+                    //                _paramAnswer[3] = _items[2]; // AFD
+                    _paramAnswer[4] = _createdate;
+
+                    db.insertKPITanpaKegiatan(_paramAnswer);
+
+                    Utils._alertClose(PanenActivity.this, "Anda sudah memilih tanpa kegiatan untuk hari ini.");
+                    //                LayoutPopupWarning lpe = new LayoutPopupWarning(PanenActivity.this);
+                    //                lpe.setCancelable(true);
+                    //                lpe.showDialog();
+                    //                lpe.tvTitle.setText("Konfirmasi");
+                    //                lpe.tvKeterangan.setText(Html.fromHtml("Pilihan ini menyebabkan Anda tidak dapat mengisi kegiatan hari ini. Anda yakin?"));
+                    //                lpe.btnPositive.setVisibility(View.VISIBLE);
+                    //                lpe.btnNegativie.setVisibility(View.VISIBLE);
+                    //                lpe.btnPositive.setText("YA");
+                    //                lpe.btnNegativie.setText("TIDAK");
+                    //                lpe.btnNegativie.setOnClickListener(new View.OnClickListener() {
+                    //                    @Override
+                    //                    public void onClick(View v) {
+                    //                        lpe.dismissDialog();
+                    //                    }
+                    //                });
+                    //                lpe.btnPositive.setOnClickListener(new View.OnClickListener() {
+                    //                    @Override
+                    //                    public void onClick(View v) {
+                    //                        tvQuestion.setText("Tidak ada kegiatan");
+                    //                        btnNext.setVisibility(View.GONE);
+                    //                        btnPrior.setText("TUTUP");
+                    //                        rbKegiatan.setEnabled(false);
+                    //                        tvDescription.setText("Anda telah memilih tidak ada kegiatan hari ini.");
+                    //                        lpe.dismissDialog();
+                    //                    }
+                    //                });
+                    rbKegiatan.setVisibility(View.GONE);
+                } else {
+                    rbKegiatan.setVisibility(View.GONE);
+                    validAnswer = true;
+                    String[] _paramQuestion = header.split(" ");
+                    Log.e("QUESTION2c1", Arrays.toString(_paramQuestion));
+
+                    Cursor _cursor = db.getTemplateQuestionCount(_paramQuestion);
+                    if (_cursor.moveToFirst()) {
+                        questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
                     }
-                });
-            }
-            else {
-                rbKegiatan.setVisibility(View.GONE);
-                validAnswer=true;
+                    Log.e("COUNT", String.valueOf(questionCount));
+
+                    //                btnPrior.setVisibility(View.GONE);
+                    //                Log.e("QUESTION1", String.valueOf(seqQuestion));
+                    _displayQuestion(1);
+                }
+            } else {
+                String[] _paramQuestion = header.split(" ");
+                Log.e("QUESTION2c1", Arrays.toString(_paramQuestion));
+
+                Cursor _cursor = db.getTemplateQuestionCount(_paramQuestion);
+                if (_cursor.moveToFirst()) {
+                    questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
+                }
+                Log.e("COUNT", String.valueOf(questionCount));
+
                 //                btnPrior.setVisibility(View.GONE);
-                Log.e("QUESTION1", String.valueOf(seqQuestion));
+                _displayQuestion(1);
             }
         }
-        _displayQuestion(1);
     }
 
     @OnClick(R.id.editAnswerTime)
@@ -195,6 +275,29 @@ public class PanenActivity extends AppCompatActivity {
 
     public void _validate() {
         if( seqQuestion > 0 ) {
+            if( diIdRef.length() > 0 ) {
+                String[] _checkIdRef = new String [3];
+                _checkIdRef[0] = tdate;
+                _checkIdRef[1] = posCode;
+                _checkIdRef[2] = diIdRef;
+                String _strCheck = db.getTemplateIdRef( _checkIdRef );
+                Log.e( "strchk:", _strCheck + " & " + tempValue );
+                if( _strCheck == "0" || _strCheck == "" || _strCheck == null ) {
+                    if( tempValue != "0" && tempValue != null && tempValue != "" ){
+                        validAnswer = false;
+                        Utils._alert(PanenActivity.this, "INVALID INPUT: ");
+                    }
+                }
+                else {
+                    if( _strCheck != "0" || _strCheck != "" || _strCheck != null ) {
+                        if( tempValue == "0" && tempValue == null && tempValue == "" ){
+                            validAnswer = false;
+                            Utils._alert(PanenActivity.this, "INVALID INPUT: ");
+                        }
+                    }
+                }
+            }
+            else
 // INTEGER
             if (typeOperation.equals("INT")) {
                 if (maxValue.length() > 0) {
@@ -216,7 +319,6 @@ public class PanenActivity extends AppCompatActivity {
 //                        seqQuestion--;
 //                    }
 //                }
-
                 validAnswer = true;
             } else if (typeOperation.equals("TIME")) {
 // TIME
@@ -231,11 +333,12 @@ public class PanenActivity extends AppCompatActivity {
     public void _displayQuestion(int _status) {
         String _tempValue = "0";
         _validate();
+        String _createdate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(c.getTime());
+
 //        validAnswer = false;
         Log.i("VALID1:", String.valueOf(validAnswer));
         if(validAnswer) {
             seqQuestion+=_status;
-
             if (seqQuestion <= 1) {
 //                Calendar c = Calendar.getInstance();
 //                String tglNow = new SimpleDateFormat("EEEE, dd MMMM yyyy").format(c.getTime());
@@ -258,11 +361,8 @@ public class PanenActivity extends AppCompatActivity {
                 }
                 Log.e( "tempValue:", tempValue );
                 String[] _paramAnswer = new String[6];
-                Calendar _c = Calendar.getInstance();
-                String _tdate = new SimpleDateFormat("yyyy-MM-dd").format(_c.getTime());
-                String _createdate = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(_c.getTime());
 
-                _paramAnswer[0] = _tdate;
+                _paramAnswer[0] = tdate;
                 _paramAnswer[1] = companyOffice;
                 _paramAnswer[2] = posCode;
                 _paramAnswer[3] = diId;
@@ -284,7 +384,7 @@ public class PanenActivity extends AppCompatActivity {
             else {
                 Utils._alertClose(PanenActivity.this, "Input selesai.<br> Anda dapat melakukan sinkronisasi di menu Status Transaksi.");
             }
-            String _header = header + " " + seqQuestion;
+            String _header = header + " " + seqQuestion+" "+tdate;
             String[] _paramQuestion = _header.split(" ");
 
             Log.e("QUESTION2c", Arrays.toString(_paramQuestion));
@@ -303,6 +403,9 @@ public class PanenActivity extends AppCompatActivity {
                 diId = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DI_ID));
                 value = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_VALUE));
 //Log.e( "value:", value);
+                if( condition.equals( "0" )) {
+                    _displayQuestion(1);
+                }
                 if (typeOperation.equals("INT")) {
 // INTEGER
                     etQuestionNumber.setVisibility(View.VISIBLE);

@@ -7,15 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.dinda.Fragment.ProfileFragment;
+import com.example.dinda.Libraries.DatabaseHelper;
 import com.example.dinda.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProfileActivity extends AppCompatActivity {
-
+    DatabaseHelper db;
+    @BindView(R.id.txtHeader)
+    TextView tvHeader;
 //    @BindView(R.id.fl_profile)
 //    FrameLayout frameLayout;
 
