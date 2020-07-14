@@ -69,6 +69,8 @@ public class PanenActivity extends AppCompatActivity {
 
     ModelDashboard modelDashboard;
     private String value="";
+    private String afd="";
+    private String kategori1="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -360,14 +362,16 @@ public class PanenActivity extends AppCompatActivity {
                     tempValue = etQuestionNumber.getText().toString().trim();
                 }
                 Log.e( "tempValue:", tempValue );
-                String[] _paramAnswer = new String[6];
+                String[] _paramAnswer = new String[8];
 
                 _paramAnswer[0] = tdate;
                 _paramAnswer[1] = companyOffice;
                 _paramAnswer[2] = posCode;
                 _paramAnswer[3] = diId;
                 _paramAnswer[4] = tempValue;
-                _paramAnswer[5] = _createdate;
+                _paramAnswer[5] = kategori1;
+                _paramAnswer[6] = afd;
+                _paramAnswer[7] = _createdate;
                 db.insertKPI(_paramAnswer);
             }
 //            Log.e("QUESTION2b", String.valueOf(seqQuestion));
@@ -395,9 +399,10 @@ public class PanenActivity extends AppCompatActivity {
                 description = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DESC_OPERATION));
                 maxValue = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_MAX_VALUE));
                 typeOperation = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_TYPE_OPERATION));
+                afd = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_AFD));
                 condition = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_CONDITION));
                 diIdRef = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DI_ID_REF));
-
+                kategori1 = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_KATEGORI1));
                 companyOffice = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_COMPANY_OFFICE));
                 posCode = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_POS_CODE));
                 diId = _cursor.getString(_cursor.getColumnIndex(db.KEY_TEMPLATE_DI_ID));

@@ -10,6 +10,7 @@ public class Config {
 //*/
     public static final String ApiURLRegister = ApiBaseURL+"register_clean";
     public static final String ApiURLProfileTemplate = ApiBaseURL+"profile_template_clean";
+    public static final String ApiURLKPI = ApiBaseURL+"kpi_clean";
 
 //    public static final String insertDataJson = root+"V1/index_post";
 //    public static final String getDataSupplier = root+"V1/index_get?SITECODE=";

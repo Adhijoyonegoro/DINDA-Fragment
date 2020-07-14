@@ -1,18 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhiteGreyfish"
     tools:context=".Tabs.ProfileActivity"
     >
 
     <RelativeLayout
-        android:id="@+id/rl_1"
+        android:id="@+id/lv1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@color/colorWhiteGreyfish"
         >
 
         <LinearLayout
@@ -35,7 +35,7 @@
         <LinearLayout
             android:id="@+id/lvHeader"
             android:layout_below="@id/corner"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
@@ -56,316 +56,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="STATUS TRANSAKSI"
+                android:textStyle="bold"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20dp"
                 android:fontFamily="@font/vagroundedstd_bold"
                 />
-
         </LinearLayout>
-
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_below="@id/rl_1"
+    <LinearLayout
+        android:paddingTop="120dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorGreyWhite"
-        >
+        android:layout_weight="1"
+        android:layout_above="@id/ll_footer"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:clickable="true"
+                android:scrollbars="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="25dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="5dp"
-                    android:text="19 - 02 - 2020"
-                    android:textAllCaps="true"
-                    android:textSize="13sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:fontFamily="@font/vagroundedstd_bold"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/el_shadow"
-                    android:elevation="1dp"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@color/colorWhiteGreyfish"
-                        android:weightSum="4"
-                        >
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center|left"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingLeft="25dp"
-                            android:paddingRight="15dp"
-                            android:text="Proses"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/vagroundedstd_thin"
-                            android:textColor="@color/colorGrayDark"
-                            />
-
-                        <LinearLayout
-                            android:layout_weight="3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:orientation="horizontal"
-                            >
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset017"
-                                android:visibility="gone"
-                                />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset016"
-                                android:visibility="visible"
-                                />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset018"
-                                android:visibility="gone"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="25dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="5dp"
-                    android:text="18 - 02 - 2020"
-                    android:textAllCaps="true"
-                    android:textSize="13sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:fontFamily="@font/vagroundedstd_bold"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/el_shadow"
-                    android:elevation="1dp"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@color/colorWhiteGreyfish"
-                        android:weightSum="4"
-                        >
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center|left"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingLeft="25dp"
-                            android:paddingRight="15dp"
-                            android:text="Proses"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/vagroundedstd_thin"
-                            android:textColor="@color/colorGrayDark"
-                            />
-
-                        <LinearLayout
-                            android:layout_weight="3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:orientation="horizontal"
-                            >
-
-                            <ImageView
-                                android:id="@+id/ic_success"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset017"
-                                android:visibility="visible"
-                                />
-
-                            <ImageView
-                                android:id="@+id/ic_warning"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset016"
-                                android:visibility="gone"
-                                />
-
-                            <ImageView
-                                android:id="@+id/ic_failed"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset018"
-                                android:visibility="gone"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="25dp"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="5dp"
-                    android:text="17 - 02 - 2020"
-                    android:textAllCaps="true"
-                    android:textSize="13sp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:fontFamily="@font/vagroundedstd_bold"
-                    />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/el_shadow"
-                    android:elevation="1dp"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:background="@color/colorWhiteGreyfish"
-                        android:weightSum="4"
-                        >
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center|left"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingLeft="25dp"
-                            android:paddingRight="15dp"
-                            android:text="Proses"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/vagroundedstd_thin"
-                            android:textColor="@color/colorGrayDark"
-                            />
-
-                        <LinearLayout
-                            android:layout_weight="3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="10dp"
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:orientation="horizontal"
-                            >
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset017"
-                                android:visibility="gone"
-                                />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset016"
-                                android:visibility="gone"
-                                />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:src="@drawable/asset018"
-                                android:visibility="visible"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
+                android:id="@+id/recyclerview_list_history">
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
-
-    </ScrollView>
-
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:paddingBottom="1dp"
+        android:visibility="visible"
+        android:weightSum="2">
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_login_selector_black"
+            android:padding="3dp"
+            android:text="KIRIM"
+            android:textColor="@color/colorWhiteGreyfish"
+            android:textSize="13sp"
+            android:fontFamily="@font/vagroundedstd_thin"
+            />
+    </LinearLayout>
 </RelativeLayout>

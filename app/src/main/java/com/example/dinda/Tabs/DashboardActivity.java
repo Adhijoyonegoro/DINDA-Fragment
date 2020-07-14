@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -22,7 +23,9 @@ import com.example.dinda.Libraries.Config;
 import com.example.dinda.Libraries.DatabaseHelper;
 import com.example.dinda.Libraries.Imei;
 import com.example.dinda.Libraries.UserSession;
+import com.example.dinda.Libraries.Utils;
 import com.example.dinda.Model.ModelDashboard;
+import com.example.dinda.Popup.LayoutPopupError;
 import com.example.dinda.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -42,6 +45,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
+import okhttp3.internal.Util;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -77,22 +81,35 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int responseCode, Header[] headers, byte[] responseBody) {
 //                Log.e("responseCode", String.valueOf(responseCode));
-
                 if (responseCode == 201) {
-//                    boolean hapus = db.deleteSupplier();
-//                    boolean hapusP = db.deletePetani();
-//                    if (hapus && hapusP) {
-//                        Log.e("hapus data", "data berhasil dihapus");
-//                    } else {
-//                        Log.e("hapus data", "data gagal dihapus");
-//                    }
                     try {
                         JSONObject _responseObj = new JSONObject(new String(responseBody));
 //                        Log.e("responseBody", _responseObj.toString()+"-"+responseCode);
+                        JSONObject _statusArray = _responseObj.getJSONObject("status");
+                        Log.e( "status", _statusArray.getString("profile" ));
+                        if(  _statusArray.getString("profile" ).equals( "notfound" ) || _statusArray.getString("template" ).equals( "notfound" )) {
+//                            Utils._alert( DashboardActivity.this,  );
+                            LayoutPopupError lpe = new LayoutPopupError( DashboardActivity.this );
+                            lpe.setCancelable(true);
+                            lpe.showDialog();
+                            lpe.tvTitle.setText("Kesalahan");
+                            lpe.tvKeterangan.setText(Html.fromHtml( "File kegiatan dan profil tidak ditemukan atau gadget Anda tidak terdaftar." ));
+                            lpe.btnPositive.setVisibility(View.GONE);
+                            lpe.btnNegativie.setVisibility(View.VISIBLE);
+                            lpe.btnNegativie.setText("TUTUP");
+                            lpe.btnNegativie.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    lpe.dismissDialog();
+//                                    finish();
+                                }
+                            });
+                        }
+
                         JSONArray _profileArray = _responseObj.getJSONArray("profile");
-//                        Log.i( "status", _profile.toString() );
+                        Log.i( "profile:", Arrays.toString(new JSONArray[]{_profileArray}) );
                         JSONArray _templateArray = _responseObj.getJSONArray("template");
-//                        Log.e( "status", _templateArray.toString() );
+                        Log.e( "template:", Arrays.toString(new JSONArray[]{_templateArray}));
                         String[] _paramTemplate = new String[14];
                         db.deleteTemplate();
                         for (int i = 0; i < _templateArray.length(); i++) {
@@ -103,7 +120,7 @@ public class DashboardActivity extends AppCompatActivity {
                             _paramTemplate[0] = _templateObj.getString("COMPANY_OFFICE");
                             _paramTemplate[1] = _templateObj.getString("KATEGORI1");
                             _paramTemplate[2] = _templateObj.getString("KATEGORI2");
-                            _paramTemplate[3] = _templateObj.getString("AFD");
+                            _paramTemplate[3] = _templateObj.getString("AFD").equals( "null" ) ? null : _templateObj.getString("AFD");;
                             _paramTemplate[4] = _templateObj.getString("POS_CODE");
                             _paramTemplate[5] = _templateObj.getString("DI_ID");
                             _paramTemplate[6] = _templateObj.getString("UOM");
@@ -128,7 +145,7 @@ public class DashboardActivity extends AppCompatActivity {
 //                                _paramTemplate[j] = "ZZZ";
                             _paramProfile[0] = _profileObj.getString("PROFILE");
                             _paramProfile[1] = _profileObj.getString("MODUL");
-                            _paramProfile[2] = _profileObj.getString("NORMA");
+                            _paramProfile[2] = _profileObj.getString("NORMA").equals( "null" ) ? null : _profileObj.getString("NORMA");
                             _paramProfile[3] = _profileObj.getString("UOM");
                             _paramProfile[4] = _profileObj.getString("URUT");
 
@@ -136,16 +153,6 @@ public class DashboardActivity extends AppCompatActivity {
 //                            Log.i( "isiARR", Arrays.toString(_paramTemplate));
                         }
                     } catch (JSONException e) {
-//                        lplSupp.llMessage.setVisibility(View.VISIBLE);
-//                        Glide.with(ListDaftarSupplierActivity.this).asGif().load(R.drawable.asset_error).into(lplSupp.ivLoading);
-//                        lplSupp.tvMessage.setText(Html.fromHtml("Gagal ambil data <br/>"+e.toString()));
-//
-//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                            lplSupp.ivList.setBackground(getResources().getDrawable(R.color.color004));
-//                        }
-//
-//                        lplSupp.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarSupplierActivity.this, R.color.color004) );
-////                            lplSupp.dismissDialog();
                         e.printStackTrace();
                     }
                 }
@@ -153,46 +160,9 @@ public class DashboardActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Utils._alert( DashboardActivity.this, "Gagal Mengontak server. (code:"+statusCode+") <br>Daftar Kegiatan dan Profil akan berjalan sesuai kondisi terakhir." );
                 Log.e("status code:", String.valueOf(statusCode));
-//                if (statusCode == 400) {
-//                    try {
-//                        JSONObject datas = new JSONObject(new String(responseBody));
-//                        Log.e("responseBody", datas.toString() + "-" + statusCode);
-//                        JSONObject response = datas.getJSONObject("response");
-//                        if (response.getInt("code") == 202) {
-//                            lplSupp.llMessage.setVisibility(View.VISIBLE);
-//                            Glide.with(ListDaftarSupplierActivity.this).asGif().load(R.drawable.asset_error).into(lplSupp.ivLoading);
-//                            lplSupp.tvMessage.setText(Html.fromHtml("Gagal mengambil data <br/>" + datas.getString("error")));
-//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                                lplSupp.ivList.setBackground(getResources().getDrawable(R.color.color004));
-//                            }
-//                            lplSupp.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarSupplierActivity.this, R.color.color004) );
-//                        }
-//                    } catch (JSONException e) {
-//                        lplSupp.llMessage.setVisibility(View.VISIBLE);
-//                        Glide.with(ListDaftarSupplierActivity.this).asGif().load(R.drawable.asset_error).into(lplSupp.ivLoading);
-//                        lplSupp.tvMessage.setText(Html.fromHtml("Gagal kirim data <br/>"+e.toString()));
-//
-//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                            lplSupp.ivList.setBackground(getResources().getDrawable(R.color.color004));
-//                        }
-//
-//                        lplSupp.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarSupplierActivity.this, R.color.color004) );
-////                            lplSupp.dismissDialog();
-//                        e.printStackTrace();
-//                    }
-//                } else {
-//                    Log.e("error", error.toString());
-//                    lplSupp.llMessage.setVisibility(View.VISIBLE);
-//                    Glide.with(ListDaftarSupplierActivity.this).asGif().load(R.drawable.asset_error).into(lplSupp.ivLoading);
-//                    lplSupp.tvMessage.setText(Html.fromHtml("Gagal mengambil data <br/>" + error.toString()));
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                        lplSupp.ivList.setBackground(getResources().getDrawable(R.color.color004));
-//                    }
-//
-//                    lplSupp.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarSupplierActivity.this, R.color.color004) );
-////                        onResume();
-//                }
+
             }
         });
 
@@ -209,10 +179,7 @@ public class DashboardActivity extends AppCompatActivity {
         Locale locale = new Locale("in");
         Calendar c = Calendar.getInstance(locale);
         String tglNow = new SimpleDateFormat("EEEE, dd MMMM yyyy").format(c.getTime());
-//        String bulan = new SimpleDateFormat("MMMM").format(c.getTime());
-//        String hari = new SimpleDateFormat("EEEE").format(c.getTime());
-//        String tgl = new SimpleDateFormat("dd").format(c.getTime());
-//        String thn = new SimpleDateFormat("yyyy").format(c.getTime());
+
         tvTgl.setText(tglNow);
 
         getMenu();
@@ -234,8 +201,8 @@ public class DashboardActivity extends AppCompatActivity {
             do {
                 _data[0] = cursor.getString(cursor.getColumnIndex(db.KEY_TEMPLATE_KATEGORI1));
                 _data[1] = cursor.getString(cursor.getColumnIndex(db.KEY_TEMPLATE_COMPANY_OFFICE));
-                _data[2] = cursor.getString(cursor.getColumnIndex(db.KEY_TEMPLATE_AFD));
-                _data[2] = _data[2].equals("null")?"":_data[2];
+                _data[2] = cursor.getString(cursor.getColumnIndex(db.KEY_TEMPLATE_AFD)) == null ? "" : cursor.getString(cursor.getColumnIndex(db.KEY_TEMPLATE_AFD));
+//                _data[2] = _data[2].equals( "null" )? "" :_data[2];
 //                Log.i("kategori1:", _data[0]+" "+_data[1]+" "+_data[2]);
 
                 switch(_data[0]) {

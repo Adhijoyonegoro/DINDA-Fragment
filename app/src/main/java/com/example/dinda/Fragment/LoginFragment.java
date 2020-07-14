@@ -92,8 +92,8 @@ public class LoginFragment extends Fragment {
         UserSession userSession = new UserSession(getContext());
 
         if( userSession.getNPK().length() == 6 ) {
-//            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-            Intent intent = new Intent(getActivity(), FotoLoginActivity.class);
+            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+//            Intent intent = new Intent(getActivity(), FotoLoginActivity.class);
             startActivity(intent);
         }
 
@@ -214,31 +214,6 @@ public class LoginFragment extends Fragment {
             imei = Imei.getUniqueIMEIId(getActivity());
             Log.i("imei", imei);
 
-//            mApiInterface = ApiClient.getClient().create(ApiInterface.class);
-//            Call<PostRegister> postRegisterCall = mApiInterface.postRegister(etName.getText().toString(), tvTglLahir.getText().toString(),imei );
-//            postRegisterCall.enqueue(new Callback<PostRegister>() {
-//
-//                @Override
-//                public void onResponse(Call<PostRegister> call, Response<PostRegister> response) {
-////                    MainActivity.ma.refresh();
-////                    finish();
-//                    Log.i("api_register", response.body().getData().toString());
-//                    String _result = response.body().getStatus();
-//                    if( _result != ApiStatus.register_success ) {
-//                        _alert( _result );
-//                    }
-//                    else {
-//                        Intent intent = new Intent(getActivity(), DashboardActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<PostRegister> call, Throwable t) {
-//                    _alert(t.getMessage());
-//                }
-//            });
-
             String url = Config.ApiURLRegister;
             AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
             RequestParams params = new RequestParams();
@@ -286,45 +261,8 @@ public class LoginFragment extends Fragment {
                                         _status = ApiStatus.register_invalid;
                                         break;
                                 }
-//                                _alert(  );
                                 Utils._alert(getActivity(), _status);
                             }
-
-//                            JSONObject response = datas.getJSONObject("response");
-//                            if (response.getInt("code") == 201) {
-//                                //success ke server
-////                                JSONObject success = datas.getJSONObject("success");
-////                            dSuccess += success.getInt("count");
-////                                if (success.getInt("count") > 0 ) {
-//
-////                                JSONArray data = success.getJSONArray("data");
-////                                Log.e("data array", String.valueOf(data.length()));
-////                                for (int i = 0; i < data.length(); i++) {
-////                                    JSONObject x = data.getJSONObject(i);
-////                                    int id = x.getInt("id");
-////                                    db.updateStatus(id, 0);
-////                                }
-////                                }
-//                                boolean update = db.updateStatusMitra(idMitra, 0);
-//                                if (update) {
-//                                    onResume();
-//                                    lplSend.llMessage.setVisibility(View.VISIBLE);
-//                                    Glide.with(ListDaftarMitra.this).asGif().load(R.drawable.asset_checklist).into(lplSend.ivLoading);
-//                                    lplSend.tvMessage.setText(Html.fromHtml("Berhasil kirim data"));
-//                                }
-//                            } else {
-//                                lplSend.llMessage.setVisibility(View.VISIBLE);
-//                                Glide.with(ListDaftarMitra.this).asGif().load(R.drawable.asset_error).into(lplSend.ivLoading);
-//                                lplSend.tvMessage.setText(Html.fromHtml("Gagal kirim data <br/>"+datas.getString("error")));
-//                                onResume();
-//
-//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                                    lplSend.ivList.setBackground(getResources().getDrawable(R.color.color004));
-//                                }
-//
-//                                lplSend.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarMitra.this, R.color.color004) );
-//
-//                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -333,30 +271,8 @@ public class LoginFragment extends Fragment {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    Utils._alert( getActivity(), "Gagal Mengontak server. (code:"+statusCode+")" );
                     Log.e("status code", String.valueOf(statusCode));
-//                    if (statusCode == 400) {
-//                        try {
-//                            JSONObject datas = new JSONObject(new String(responseBody));
-//                            Log.e("responseBody", datas.toString()+"-"+statusCode);
-//                            JSONObject response = datas.getJSONObject("response");
-//                            if (response.getInt("code") == 202) {
-//                                lplSend.llMessage.setVisibility(View.VISIBLE);
-//                                Glide.with(ListDaftarMitra.this).asGif().load(R.drawable.asset_error).into(lplSend.ivLoading);
-//                                lplSend.tvMessage.setText(Html.fromHtml("Gagal kirim data <br/>"+datas.getString("error")));
-//                                onResume();
-//
-//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                                    lplSend.ivList.setBackground(getResources().getDrawable(R.color.color004));
-//                                }
-//
-//                                lplSend.ivList.setBackgroundDrawable(ContextCompat.getDrawable(ListDaftarMitra.this, R.color.color004) );
-//
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
                 }
             });
         }
