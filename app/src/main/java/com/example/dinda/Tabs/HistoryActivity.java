@@ -92,7 +92,7 @@ public class HistoryActivity extends AppCompatActivity {
                 DatabaseHelper DB_Helper = new DatabaseHelper(HistoryActivity.this);
                 SQLiteDatabase db = DB_Helper.getReadableDatabase();
                 final Cursor cur = db.rawQuery(
-                        "SELECT TDATE as TDATE FROM M_DATE WHERE TDATE <= '"+strNow+"' ORDER BY TDATE DESC LIMIT 7 ", null);
+                        "SELECT TDATE as TDATE FROM M_DATE WHERE TDATE <= '"+strNow+"' ORDER BY TDATE DESC LIMIT 5", null);
                 cur.moveToPosition(0);
                 dataModels = new ArrayList<>();
                 for (int i = 0; i < cur.getCount(); i++) {

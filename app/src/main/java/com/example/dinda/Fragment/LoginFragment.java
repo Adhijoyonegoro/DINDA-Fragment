@@ -92,8 +92,8 @@ public class LoginFragment extends Fragment {
         UserSession userSession = new UserSession(getContext());
 
         if( userSession.getNPK().length() == 6 ) {
-            Intent intent = new Intent(getActivity(), DashboardActivity.class);
-//            Intent intent = new Intent(getActivity(), FotoLoginActivity.class);
+//            Intent intent = new Intent(getActivity(), DashboardActivity.class);
+            Intent intent = new Intent(getActivity(), FotoLoginActivity.class);
             startActivity(intent);
         }
 

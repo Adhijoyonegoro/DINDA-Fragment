@@ -47,7 +47,7 @@ public class AdapterProfileDetail extends RecyclerView.Adapter<AdapterProfileDet
         final String str_modul = dataModel.getModule();
         final String str_norma = dataModel.getNorma();
         viewHolder.txt_norma.setText(str_modul);
-        viewHolder.txt_profile.setText(str_modul+" "+str_norma);
+        viewHolder.txt_profile.setText(str_norma);
 
 
 

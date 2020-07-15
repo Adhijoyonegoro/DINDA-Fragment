@@ -97,8 +97,7 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.HistoryH
                     );
                     cur.moveToNext();
                 }
-
-                cur.close();
+//                cur.close();
                 db.close();
             } catch (Exception ex) {
                 Log.i("HISTORY", ex.toString());

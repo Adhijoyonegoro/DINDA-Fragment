@@ -32,7 +32,6 @@ public class FotoLoginActivity extends AppCompatActivity {
                 if( capturedImageButton.getText().toString().equals( "FOTO" )) {
                     Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(photoCaptureIntent, requestCode);
-                    capturedImageButton.setText( "LANJUT" );
                     Log.e("B:", String.valueOf(requestCode));
                 }
                 else {
@@ -51,6 +50,8 @@ public class FotoLoginActivity extends AppCompatActivity {
         if(this.requestCode == requestCode && resultCode == RESULT_OK){
             Bitmap bitmap = (Bitmap)data.getExtras().get("data");
             imageHolder.setImageBitmap(bitmap);
+            Button capturedImageButton = (Button)findViewById(R.id.take_picture);
+            capturedImageButton.setText( "LANJUT" );
             Log.e( "A:", "aa" );
         }
     }

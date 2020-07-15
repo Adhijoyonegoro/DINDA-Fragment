@@ -128,7 +128,7 @@ public class PanenActivity extends AppCompatActivity {
                 questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
             }
             Log.e("COUNT", String.valueOf(questionCount));
-
+            _cursor.close();
             //                btnPrior.setVisibility(View.GONE);
 //                Log.e("QUESTION1", String.valueOf(seqQuestion));
             _displayQuestion(1);
@@ -238,7 +238,7 @@ public class PanenActivity extends AppCompatActivity {
                         questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
                     }
                     Log.e("COUNT", String.valueOf(questionCount));
-
+                    _cursor.close();
                     //                btnPrior.setVisibility(View.GONE);
                     //                Log.e("QUESTION1", String.valueOf(seqQuestion));
                     _displayQuestion(1);
@@ -252,7 +252,7 @@ public class PanenActivity extends AppCompatActivity {
                     questionCount = _cursor.getInt(_cursor.getColumnIndex("ROWS"));
                 }
                 Log.e("COUNT", String.valueOf(questionCount));
-
+                _cursor.close();
                 //                btnPrior.setVisibility(View.GONE);
                 _displayQuestion(1);
             }
@@ -451,6 +451,7 @@ public class PanenActivity extends AppCompatActivity {
                 tvDescription.setText(description);
                 btnPrior.setText("KEMBALI");
             }
+            _cursor.close();
         }
     }
 }

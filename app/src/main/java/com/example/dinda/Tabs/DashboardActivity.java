@@ -252,7 +252,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardList.add(new ModelDashboard(91, R.drawable.asset06, "PROFIL"));
 //        dashboardList.add(new ModelDashboard(10, R.drawable.asset07b, "PENGATURAN"));
 //        dashboardList.add(new ModelDashboard("id_info_resto", R.drawable.ic_resto_green,"Info Restoran"));
-
+        cursor.close();
         adapterDashboard.notifyDataSetChanged();
     }
 
