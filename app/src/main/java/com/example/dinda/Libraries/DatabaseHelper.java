@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
+import com.example.dinda.Model.History;
+
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -300,6 +303,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM "+TABLE_M_TEMPLATE);
         db.close();
+    }
+
+    public boolean updateKPISent(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_TEMPLATE_SENT, 1);
+        long result = db.update( TABLE_T_KPI, contentValues, KEY_TEMPLATE_SENT+" =" + 0, null);
+        db.close();
+        return result != -1;
+    }
+
+    public String[] getKPIDateNotSent(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor _cursor =  db.rawQuery("SELECT DISTINCT TDATE FROM "+TABLE_T_KPI+" WHERE SENT =0 ORDER BY TDATE DESC", null);
+        String _tdate="";
+        String _poscode="";
+        String _company ="";
+        String _di_id ="";
+        String _value = "";
+        String _kpicode = "";
+
+        if( _cursor.moveToFirst() ) {
+            for ( _cursor.moveToFirst(); !_cursor.isAfterLast(); _cursor.moveToNext()) {
+                String _strtdate = _cursor.getString(_cursor.getColumnIndex(KEY_TEMPLATE_DATE));
+                _tdate += _strtdate+"^";
+                Cursor _cursor_detail =  db.rawQuery("SELECT POS_CODE,COMPANY_OFFICE,DI_ID,VALUE FROM "+TABLE_T_KPI+" WHERE SENT = 0 AND TDATE = '"+_strtdate+"' ORDER BY TDATE DESC, POS_CODE, COMPANY_OFFICE, DI_ID", null);
+                if( _cursor_detail.moveToFirst() ) {
+                    for ( _cursor_detail.moveToFirst(); !_cursor_detail.isAfterLast(); _cursor_detail.moveToNext()) {
+                        _poscode = _cursor_detail.getString(_cursor_detail.getColumnIndex(KEY_TEMPLATE_POS_CODE));
+                        _company = _cursor_detail.getString(_cursor_detail.getColumnIndex(KEY_TEMPLATE_COMPANY_OFFICE));
+                        _di_id = _cursor_detail.getString(_cursor_detail.getColumnIndex(KEY_TEMPLATE_DI_ID));
+                        _value += _cursor_detail.getString(_cursor_detail.getColumnIndex(KEY_TEMPLATE_VALUE))+"|";
+                        _kpicode += _poscode+"_"+_company+_di_id+"|";
+                    }
+                    _kpicode = _kpicode.substring(0, _kpicode.length() - 1);
+                    _value = _value.substring(0, _value.length() - 1);
+                    _kpicode +="^";
+                    _value += "^";
+                }
+                _cursor_detail.close();
+            }
+        }
+        _cursor.close();
+        _tdate = _tdate.substring(0, _tdate.length() - 1);
+        _kpicode = _kpicode.substring(0, _kpicode.length() - 1);
+        _value = _value.substring(0, _value.length() - 1);
+        String[] _postData = new String[3];
+        _postData[0] = _tdate;
+        _postData[1] = _kpicode;
+        _postData[2] = _value;
+        return _postData;
     }
 
     public Cursor getProfile(){

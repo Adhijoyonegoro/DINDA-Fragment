@@ -54,7 +54,7 @@ public class AdapterHistoryDetail extends RecyclerView.Adapter<AdapterHistoryDet
         final String str_save = dataModel.getSave();
         final String str_sent = dataModel.getSent();
 
-        viewHolder.txt_kategori1.setText(str_date+" " +str_kategori1+" " +str_company+" " +str_afd);
+        viewHolder.txt_kategori1.setText(str_kategori1+" " +str_company+" " +str_afd);
         if( Integer.valueOf(str_save) > 0  ) {
             if( Integer.valueOf(str_sent) == 1 ) {
                 viewHolder.txt_imgdone.setVisibility(View.GONE);
@@ -66,7 +66,7 @@ public class AdapterHistoryDetail extends RecyclerView.Adapter<AdapterHistoryDet
                 viewHolder.txt_imgsent.setVisibility(View.GONE);
             }
         }else {
-            System.out.println(str_kategori1+" X "+str_date+" X "+str_save+" X "+str_sent);
+//            System.out.println(str_kategori1+" X "+str_date+" X "+str_save+" X "+str_sent);
             viewHolder.txt_imgdone.setVisibility(View.GONE);
             viewHolder.txt_imgundone.setVisibility(View.VISIBLE);
             viewHolder.txt_imgsent.setVisibility(View.GONE);
@@ -98,7 +98,6 @@ public class AdapterHistoryDetail extends RecyclerView.Adapter<AdapterHistoryDet
             txt_imgsent = convertView.findViewById(R.id.img_sent);
             txt_imgdone = convertView.findViewById(R.id.img_done);
             txt_imgundone = convertView.findViewById(R.id.img_undone);
-
 
         }
     }

@@ -81,7 +81,7 @@ public class AdapterHistory extends RecyclerView.Adapter<AdapterHistory.HistoryH
                         "UNION " +
                         "SELECT DISTINCT '"+strTdate+"', A.KATEGORI1, A.COMPANY_OFFICE, A.AFD, POS_CODE FROM M_TEMPLATE A" +
                         ") A";
-                System.out.println( sql );
+//                System.out.println( sql );
                 final Cursor cur = db.rawQuery( sql,null );
                 cur.moveToPosition(0);
                 dataModels = new ArrayList<>();

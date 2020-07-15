@@ -52,7 +52,7 @@ public class HistoryActivity extends AppCompatActivity {
 //    AdapterProfile myprofileAdapter;
     AdapterHistory historyAdapter;
     @BindView(R.id.btnSend)
-    TextView tvTgl;
+    Button btnSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +68,13 @@ public class HistoryActivity extends AppCompatActivity {
         Calendar end = Calendar.getInstance();
         start.add(Calendar.DATE, -6);
         end.add(Calendar.DATE, +1);
-        System.out.println(end.getTime());
-        System.out.println(start.getTime());
+//        System.out.println(end.getTime());
+//        System.out.println(start.getTime());
 
         for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
             String tdate = new SimpleDateFormat("yyyy-MM-dd").format(date);
             db.insertDate( tdate );
-            System.out.println(tdate);
+//            System.out.println(tdate);
         }
         String strNow = new SimpleDateFormat("yyyy-MM-dd").format(now.getTime());
         super.onCreate(savedInstanceState);
@@ -126,65 +126,82 @@ public class HistoryActivity extends AppCompatActivity {
 //        fragmentTransaction.replace(R.id.fl_profile, profileFragment);
 //        fragmentTransaction.addToBackStack(null);
 //        fragmentTransaction.commit();
-
+        db.close();
     }
 
     @OnClick(R.id.btnSend)
     public void onViewClickedSend() {
+        btnSend.setText("SEDANG MENGIRIM ..");
+        btnSend.setEnabled(false);
+        db = new DatabaseHelper(HistoryActivity.this.getApplicationContext());
         String _imei = Imei.getUniqueIMEIId(HistoryActivity.this);
         String url = Config.ApiURLKPI;
         AsyncHttpClient client = new AsyncHttpClient(true, 80, 443);
         RequestParams params = new RequestParams();
         try {
             UserSession userSession = new UserSession(HistoryActivity.this);
-            params.put("npk", userSession.getNPK());
             params.put("imei", _imei);
+            String[] _postDate = db.getKPIDateNotSent();
+            params.put( "tanggal", _postDate[0] );
+            params.put( "kpicode", _postDate[1] );
+            params.put( "kpivalue", _postDate[2] );
+            params.put( "ip", Utils.getIPAddress(true) );
+            params.put( "error_log", "" );
+            params.put( "img", "" );
+
+            client.post(url, params, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int responseCode, Header[] headers, byte[] responseBody) {
+//                    Log.e("status code", new String(responseBody));
+//                    Log.e("status code", String.valueOf(statusCode));
+                    if (responseCode == 201) {
+                        try {
+                            String _status="success";
+                            JSONObject _responseObj = new JSONObject(new String(responseBody));
+//                            Log.e("responseBody", _responseObj.toString()+"-"+responseCode);
+                            String _statusCode = _responseObj.getString("status");
+//                            Log.e( "status", _statusCode );
+                            Utils._alert( HistoryActivity.this, _statusCode );
+                            if( _statusCode.equals("success")) {
+                                JSONObject data = _responseObj.getJSONObject("data");
+                            }
+                            else {
+                                switch (_statusCode) {
+                                    case "imei_ganda":
+                                        _status = ApiStatus.imei_ganda;
+                                        break;
+                                    case "invalid":
+                                        _status = ApiStatus.register_invalid;
+                                        break;
+                                }
+                                Utils._alert(HistoryActivity.this, _status);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        db.updateKPISent();
+                        Utils._alertClose( HistoryActivity.this, "Data Terkirim" );
+                    }
+                    else {
+                        Utils._alertClose( HistoryActivity.this, "Sinkronisasi Gagal.("+responseCode+")" );
+                    }
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                    Log.e("status code", String.valueOf(statusCode));
+                    Utils._alertClose( HistoryActivity.this, "Sinkronisasi Gagal.("+statusCode+")" );
+                }
+            });
         } catch (Exception e){
             e.printStackTrace();
             Log.e("error", String.valueOf(e instanceof Exception));
         }
         Log.e("url:", url);
         Log.e("params:", Arrays.toString(new RequestParams[]{params}));
-
-        client.post(url, params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int responseCode, Header[] headers, byte[] responseBody) {
-//                    Log.e("status code", new String(responseBody));
-//                    Log.e("status code", String.valueOf(statusCode));
-                if (responseCode == 201) {
-                    try {
-                        String _status="success";
-                        JSONObject _responseObj = new JSONObject(new String(responseBody));
-//                            Log.e("responseBody", _responseObj.toString()+"-"+responseCode);
-                        String _statusCode = _responseObj.getString("status");
-//                            Log.e( "status", _statusCode );
-                        Utils._alert( HistoryActivity.this, _statusCode );
-                        if( _statusCode.equals("success")) {
-                            JSONObject data = _responseObj.getJSONObject("data");
-                        }
-                        else {
-                            switch (_statusCode) {
-                                case "imei_ganda":
-                                    _status = ApiStatus.imei_ganda;
-                                    break;
-                                case "invalid":
-                                    _status = ApiStatus.register_invalid;
-                                    break;
-                            }
-                            Utils._alert(HistoryActivity.this, _status);
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Log.e("status code", String.valueOf(statusCode));
-            }
-        });
-        Utils._alertClose( HistoryActivity.this, "Data Terkirim" );
+        btnSend.setEnabled(true);
+        btnSend.setText("KIRIM");
+        db.close();
     }
 
 }
